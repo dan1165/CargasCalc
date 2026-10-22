@@ -1,6 +1,8 @@
 name: Build unsigned IPA
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -22,11 +24,19 @@ jobs:
           xcodebuild -version
           xcrun --sdk iphoneos --show-sdk-version
 
+      - name: Set version
+        run: |
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString 1.0.${GITHUB_RUN_NUMBER}" Info.plist
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${GITHUB_RUN_NUMBER}" Info.plist
+
       - name: Build IPA
         run: xtool dev build -c release --ipa
 
+      - name: Name IPA
+        run: cp xtool/CargasCalc.ipa "xtool/CargasCalc-1.0.${GITHUB_RUN_NUMBER}.ipa"
+
       - uses: actions/upload-artifact@v7
         with:
-          name: CargasCalc-ipa
-          path: xtool/CargasCalc.ipa
+          name: CargasCalc-1.0.${{ github.run_number }}
+          path: xtool/CargasCalc-1.0.${{ github.run_number }}.ipa
           if-no-files-found: error

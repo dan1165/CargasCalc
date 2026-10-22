@@ -8,16 +8,13 @@ public enum Money {
         return max(0, Int(((Double(cleaned) ?? 0) * 100).rounded()))
     }
 
+    private static let style: FloatingPointFormatStyle<Double> = .number
+        .locale(Locale(identifier: "en_US"))
+        .grouping(.automatic)
+        .precision(.fractionLength(2))
+
     public static func format(_ cents: Int) -> String {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale(identifier: "en_US_POSIX")
-        formatter.numberStyle = .decimal
-        formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 2
-        formatter.groupingSeparator = ","
-        formatter.decimalSeparator = "."
-        formatter.positivePrefix = "RM "
-        return formatter.string(from: NSNumber(value: Double(cents) / 100)) ?? "RM 0.00"
+        "RM " + (Double(cents) / 100).formatted(style)
     }
 }
 

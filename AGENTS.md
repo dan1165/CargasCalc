@@ -4,10 +4,11 @@ iOS 26 SwiftUI app built with xtool (no `.xcodeproj`). It splits a cash pot thre
 
 ## Build and ship
 
-- Build only through the `Build unsigned IPA` workflow (`.github/workflows/build-ipa.yml`). It is `workflow_dispatch` only — pushing does not build.
+- Build only through the `Build unsigned IPA` workflow (`.github/workflows/build-ipa.yml`). It runs on every push to `main` and can also be dispatched manually.
+- The workflow sets `CFBundleShortVersionString` to `1.0.<run number>` and `CFBundleVersion` to `<run number>` before building.
 - It runs on `macos-26-intel` deliberately: the `macos-latest` arm64 pool queued 10–25 min and had jobs cancelled before starting. Don't switch back without testing.
 - On macOS xtool skips SDK setup and uses the runner's Xcode, so no Apple login is needed for an unsigned build.
-- Output is `xtool/CargasCalc.ipa`, unsigned. A downloaded copy at the repo root is gitignored and safe to overwrite.
+- Output is `xtool/CargasCalc-1.0.<run number>.ipa`, unsigned. A downloaded copy at the repo root is gitignored and safe to overwrite.
 - A local Linux build is not possible without `xtool sdk install <Xcode.xip>` (wrapper: `~/.local/bin/xtool`). Don't attempt it; use CI.
 
 ## Tests

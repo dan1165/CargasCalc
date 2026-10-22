@@ -26,13 +26,14 @@ The native UI only needs iOS 17 APIs. If older devices matter, the deployment ta
 
 ## Build
 
-The unsigned IPA is built by the `Build unsigned IPA` GitHub Actions workflow. It is **manual dispatch only**; pushing does not build.
+The unsigned IPA is built by the `Build unsigned IPA` GitHub Actions workflow on every push to `main`, and manually via workflow dispatch.
 
 - Runner: `macos-26-intel` (the arm64 pool had long queues).
 - Product: `CargasCalc`.
 - Toolchain: Swift 6.3, native SwiftUI, Xcode 26 on macOS 26.
-- Output: `xtool/CargasCalc.ipa`.
-- Artifact: `CargasCalc-ipa`.
+- Version: `1.0.<run number>` with build number `<run number>`, set by the workflow.
+- Output: `xtool/CargasCalc-1.0.<run number>.ipa`.
+- Artifact: `CargasCalc-1.0.<run number>`.
 - Local Linux builds need an Xcode SDK; use CI instead.
 - The IPA is unsigned. Sign it with your own signing service before installing.
 
