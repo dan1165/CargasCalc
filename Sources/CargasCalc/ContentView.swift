@@ -3,10 +3,9 @@ import CargasCalcCore
 
 struct ContentView: View {
     @Environment(HistoryStore.self) private var history
-    @State private var cashText = "2000"
-    @State private var advanceTexts = ["500", "250", "0"]
+    @State private var cashText = ""
+    @State private var advanceTexts = ["", "", ""]
     @State private var showHistory = false
-    @State private var saveCount = 0
 
     private var split: Split {
         Split(cash: Money.parse(cashText), advances: advanceTexts.map(Money.parse))
@@ -22,14 +21,7 @@ struct ContentView: View {
                 Section("Taken early") {
                     ForEach(Split.people.indices, id: \.self) { index in
                         LabeledContent(Split.people[index]) {
-                            HStack(spacing: 4) {
-                                Text("RM")
-                                    .foregroundStyle(.secondary)
-                                TextField("0", text: $advanceTexts[index])
-                                    .keyboardType(.decimalPad)
-                                    .multilineTextAlignment(.trailing)
-                                    .monospacedDigit()
-                            }
+                            moneyField($advanceTexts[index])
                         }
                     }
                 }
@@ -41,7 +33,6 @@ struct ContentView: View {
                 Section {
                     Button {
                         history.save(split)
-                        saveCount += 1
                     } label: {
                         Label("Save to history", systemImage: "square.and.arrow.down")
                             .frame(maxWidth: .infinity)
@@ -72,14 +63,13 @@ struct ContentView: View {
         .sheet(isPresented: $showHistory) {
             HistoryView()
         }
-        .sensoryFeedback(.success, trigger: saveCount)
     }
 
     private func moneyField(_ text: Binding<String>) -> some View {
         HStack(spacing: 4) {
             Text("RM")
                 .foregroundStyle(.secondary)
-            TextField("0", text: text)
+            TextField("", text: text)
                 .keyboardType(.decimalPad)
                 .multilineTextAlignment(.trailing)
                 .monospacedDigit()
@@ -111,11 +101,4 @@ struct SplitBreakdown: View {
             }
         }
     }
-}
-
-#Preview {
-    ContentView()
-        .environment(HistoryStore())
-        .preferredColorScheme(.dark)
-        .tint(.white)
 }

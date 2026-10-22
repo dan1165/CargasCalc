@@ -6,6 +6,7 @@ Repository: [github.com/dan1165/CargasCalc](https://github.com/dan1165/CargasCal
 
 ## What it does
 
+- The app starts with empty fields; there are no demo numbers.
 - Enter the cash in hand and how much each person took early.
 - See the total pot, each person's equal share, and what they still receive.
 - Save splits to history, open, edit, share, or delete them.

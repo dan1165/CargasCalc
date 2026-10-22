@@ -153,14 +153,14 @@ private struct EditSplitView: View {
         NavigationStack {
             Form {
                 Section("Cash in hand") {
-                    TextField("0", text: $cashText)
+                    TextField("", text: $cashText)
                         .keyboardType(.decimalPad)
                 }
 
                 Section("Taken early") {
                     ForEach(Split.people.indices, id: \.self) { index in
                         LabeledContent(Split.people[index]) {
-                            TextField("0", text: $advanceTexts[index])
+                            TextField("", text: $advanceTexts[index])
                                 .keyboardType(.decimalPad)
                                 .multilineTextAlignment(.trailing)
                         }
