@@ -27,7 +27,8 @@ iOS 26 SwiftUI app built with xtool (no `.xcodeproj`). It splits a cash pot thre
 - `SplitRecord` is the persisted history model (JSON in `UserDefaults`). Editing a record must preserve its `id` and `date`.
 - Display name **CargasCalc** comes from `Info.plist` via `infoPath` in `xtool.yml`. Product, module and bundle ID are all `CargasCalc` / `com.daniisaahir.cargascalc`; this is a fresh identity and does not read data from the old `Calc` app.
 - The UI is plain native SwiftUI (`Form`, `List`, `Section`, `LabeledContent`, `NavigationStack`) in forced dark mode with a white tint. There is no custom theme, background or glass helper; keep it that way unless a UI change needs otherwise.
-- Deployment target is iOS **26.0** (project baseline; CI uses macOS 26/Xcode 26). The UI has no custom Liquid Glass APIs; lowering the target is possible but needs CI verification.
-- Known gaps: no app icon (`xtool.yml` `iconPath` takes a PNG), and no simulator/on-device visual check.
+- Deployment target is iOS **26.0**: the minimum install version, not the SDK. The build uses Swift tools 6.3 and the latest iOS SDK/Xcode available on the macOS 26 runner. The native UI only needs iOS 17 APIs, so the target can be lowered if older devices matter.
+- App icon: `icon.png` via `iconPath` in `xtool.yml`.
+- Known gap: no simulator/on-device visual check.
 
 More user-facing detail is in `README.md`; keep the two files consistent.

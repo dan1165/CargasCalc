@@ -17,6 +17,11 @@ jobs:
 
       # On macOS xtool uses the runner's Xcode SDK, so no Apple login or
       # SDK download is needed for an unsigned build.
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          xcrun --sdk iphoneos --show-sdk-version
+
       - name: Build IPA
         run: xtool dev build -c release --ipa
 
