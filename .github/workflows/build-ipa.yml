@@ -1,0 +1,27 @@
+name: Build unsigned IPA
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    # macOS 26 on the Intel pool: same Xcode, much shorter queues than the
+    # arm64 macos-latest pool. xtool still produces an arm64 app.
+    runs-on: macos-26-intel
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install xtool
+        run: brew install xtool-org/tap/xtool
+
+      # On macOS xtool uses the runner's Xcode SDK, so no Apple login or
+      # SDK download is needed for an unsigned build.
+      - name: Build IPA
+        run: xtool dev build -c release --ipa
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: CargasCalc-ipa
+          path: xtool/CargasCalc.ipa
+          if-no-files-found: error
