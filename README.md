@@ -9,6 +9,7 @@ Repository: [github.com/dan1165/CargasCalc](https://github.com/dan1165/CargasCal
 - The app starts with empty fields; there are no demo numbers.
 - Enter the cash in hand and how much each person took early.
 - See the total pot, each person's equal share, and what they still receive.
+- The split is drawn as a midnight transit route: one pot junction, three coloured lines, and a bright tail for what each person still gets.
 - Save splits to history, open, edit, share, or delete them.
 - Money is handled in integer cents; no floating-point split math.
 

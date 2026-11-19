@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-19T07:10:00Z",
+  "title": "Design System: CargasCalc",
+  "extensions": {
+    "colorMeta": {
+      "ink": { "role": "neutral", "displayName": "Route Ink", "canonical": "#081428", "tonalRamp": ["#03070E", "#050B16", "#081428", "#0C1D36", "#112846", "#173356", "#1E3F68", "#274E7C"] },
+      "deep": { "role": "neutral", "displayName": "Deep Enamel", "canonical": "#050E1C", "tonalRamp": ["#02060C", "#030A12", "#050E1C", "#081528", "#0B1D36", "#0F2645", "#143056", "#1A3C69"] },
+      "panel": { "role": "neutral", "displayName": "Panel Enamel", "canonical": "#0F213A", "tonalRamp": ["#060D17", "#091526", "#0C1B30", "#0F213A", "#132945", "#183352", "#1D3E62", "#244B74"] },
+      "hairline": { "role": "neutral", "displayName": "Chart Hairline", "canonical": "#23395A", "tonalRamp": ["#0B1320", "#111D30", "#172A43", "#1D3552", "#23395A", "#2E4A70", "#3B5C87", "#4A6F9E"] },
+      "porcelain": { "role": "primary", "displayName": "Porcelain", "canonical": "#F4F7FB", "tonalRamp": ["#1A2430", "#2C3A49", "#455565", "#637486", "#8796A5", "#AFBAC5", "#D7DDE4", "#F4F7FB"] },
+      "secondary": { "role": "neutral", "displayName": "Platform Blue-Grey", "canonical": "#97A9BC", "tonalRamp": ["#1C2631", "#2C3946", "#404F5F", "#566878", "#6E8193", "#8295A6", "#97A9BC", "#B6C3D0"] },
+      "line-imran": { "role": "secondary", "displayName": "Scarlet Line", "canonical": "#E03A2F", "tonalRamp": ["#2B0A08", "#4D1210", "#731B17", "#99231D", "#BE2C24", "#E03A2F", "#EC6960", "#F49A94"] },
+      "line-bambang": { "role": "secondary", "displayName": "Amber Line", "canonical": "#F0A500", "tonalRamp": ["#2E1F00", "#4D3400", "#6E4A00", "#8F6000", "#BC7E00", "#F0A500", "#FFC24A", "#FFD98A"] },
+      "line-danii": { "role": "secondary", "displayName": "Cobalt Line", "canonical": "#2F6FD0", "tonalRamp": ["#071427", "#0C2140", "#12305C", "#193F79", "#215097", "#2F6FD0", "#5D93E3", "#95B9EF"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Cash Display", "purpose": "Cash in hand and saved total pot; light monospaced digits." },
+      "title": { "displayName": "Station Payout", "purpose": "Each person's payout; the second-largest object on the screen." },
+      "headline": { "displayName": "Name / Action", "purpose": "Person names and the primary button label." },
+      "body": { "displayName": "Editable Amount", "purpose": "Text fields and list labels." },
+      "label": { "displayName": "Arithmetic Label", "purpose": "Share, gets now, legends, timestamps." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "system-default", "value": "cubic-bezier(0.25, 0.1, 0.25, 1)", "purpose": "Only the system navigation, sheet, and keyboard transitions. No authored motion." }
+    ],
+    "breakpoints": [
+      { "name": "iphone-compact", "value": "393px" },
+      { "name": "iphone-large", "value": "430px" },
+      { "name": "ipad", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Save split; the only porcelain-filled control.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"17\" height=\"17\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 3v12\"/><path d=\"M7 10l5 5 5-5\"/><path d=\"M5 21h14\"/></svg>Save split</button>",
+      "css": ".ds-btn-primary{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:52px;border:0;border-radius:999px;background:#F4F7FB;color:#081428;font:600 17px/1.2 -apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif;transition:opacity .15s ease}.ds-btn-primary:hover{opacity:.9}.ds-btn-primary:active{opacity:.72}.ds-btn-primary:disabled{opacity:.38;cursor:default}.ds-btn-primary:focus-visible{outline:2px solid #F4F7FB;outline-offset:3px}"
+    },
+    {
+      "name": "Advance Field",
+      "kind": "input",
+      "refersTo": "field-advance",
+      "description": "Right-aligned ringgit entry for what a person took early.",
+      "html": "<label class=\"ds-field\"><span>Took early</span><span class=\"ds-field-rm\">RM</span><input class=\"ds-field-input\" inputmode=\"decimal\" value=\"50.00\"></label>",
+      "css": ".ds-field{display:flex;align-items:center;gap:8px;font:400 12px/1.3 -apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif;color:#97A9BC}.ds-field-rm{color:#6A7E96;font-size:11px;margin-left:auto}.ds-field-input{width:92px;height:32px;padding:0 9px;border:0;border-radius:8px;background:#0F213A;color:#F4F7FB;text-align:right;font:600 15px/1 'SF Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}.ds-field-input:focus{outline:2px solid #2F6FD0;outline-offset:1px}"
+    },
+    {
+      "name": "Pot Route Bar",
+      "kind": "custom",
+      "refersTo": "route-bar",
+      "description": "Three equal cells; dim = took early, bright = still gets.",
+      "html": "<div class=\"ds-route\"><div class=\"ds-cell ds-imran\"><i style=\"width:47%\"></i><b style=\"width:53%\"></b></div><div class=\"ds-cell ds-bambang\"><i style=\"width:0\"></i><b style=\"width:100%\"></b></div><div class=\"ds-cell ds-danii\"><i style=\"width:28%\"></i><b style=\"width:72%\"></b></div></div><div class=\"ds-legend\"><span><em class=\"on\"></em>gets now</span><span><em></em>took early</span><span class=\"ds-total\">Payouts total RM 240.00</span></div>",
+      "css": ".ds-route{display:flex;gap:3px;height:12px;border-radius:4px;overflow:hidden}.ds-cell{position:relative;flex:1;display:flex}.ds-cell i{display:block;background:currentColor;opacity:.2}.ds-cell b{display:block;background:currentColor}.ds-imran{color:#E03A2F}.ds-bambang{color:#F0A500}.ds-danii{color:#2F6FD0}.ds-legend{display:flex;gap:12px;align-items:center;margin-top:9px;font:400 11px/1.3 -apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif;color:#97A9BC}.ds-legend span{display:flex;align-items:center;gap:5px}.ds-legend em{width:10px;height:6px;border-radius:2px;background:#F4F7FB;opacity:.22}.ds-legend em.on{opacity:1}.ds-total{margin-left:auto;color:#6A7E96;font-size:10px}"
+    },
+    {
+      "name": "Station Row",
+      "kind": "custom",
+      "description": "Rail, name and share, poster payout, inline advance field.",
+      "html": "<div class=\"ds-station\"><div class=\"ds-rail ds-imran\"><i></i><em></em></div><div class=\"ds-station-body\"><div class=\"ds-station-top\"><div><strong>Imran</strong><small>share RM 106.67</small></div><div class=\"ds-payout\"><span class=\"ds-payout-rm\">RM</span>56.67<small>gets now</small></div></div><div class=\"ds-station-field\"><span>Took early</span><b>RM</b><input inputmode=\"decimal\" value=\"50.00\"></div></div></div>",
+      "css": ".ds-station{display:flex;gap:14px;padding:14px 0;background:#081428}.ds-rail{display:flex;flex-direction:column;align-items:center;width:22px}.ds-rail i{width:2px;height:12px;background:currentColor;opacity:.5}.ds-rail em{width:12px;height:12px;border-radius:50%;background:currentColor;box-shadow:0 0 0 3px #081428}.ds-imran{color:#E03A2F}.ds-station-body{flex:1}.ds-station-top{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.ds-station-top strong{display:block;color:#F4F7FB;font:600 17px/1.25 -apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif}.ds-station-top small{display:block;color:#97A9BC;font:400 12px/1.3 -apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif;margin-top:2px}.ds-payout{color:#F4F7FB;font:300 28px/1.15 -apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif;font-variant-numeric:tabular-nums;text-align:right}.ds-payout-rm{color:#97A9BC;font-size:12px;margin-right:4px}.ds-payout small{display:block;font-size:11px;color:#97A9BC;margin-top:2px}.ds-station-field{display:flex;align-items:center;gap:8px;margin-top:9px;color:#97A9BC;font:400 12px/1.3 -apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif}.ds-station-field b{margin-left:auto;color:#6A7E96;font-size:11px}.ds-station-field input{width:92px;height:32px;border:0;border-radius:8px;background:#0F213A;color:#F4F7FB;text-align:right;font:600 15px/1 'SF Mono',ui-monospace,monospace;padding:0 9px}.ds-station-field input:focus{outline:2px solid #2F6FD0;outline-offset:1px}"
+    },
+    {
+      "name": "Saved Row",
+      "kind": "custom",
+      "description": "History row: date, pot, three line-coloured payout facts.",
+      "html": "<div class=\"ds-saved\"><div class=\"ds-saved-top\"><span>19 Nov, 09:41</span><b>RM 320.00</b></div><div class=\"ds-saved-lines\"><span class=\"ds-imran\"><i></i>Imran 56.67</span><span class=\"ds-bambang\"><i></i>Bambang 106.67</span><span class=\"ds-danii\"><i></i>Danii 76.66</span></div></div>",
+      "css": ".ds-saved{padding:14px 14px;background:#0F213A;border-bottom:1px solid #23395A;font-family:-apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif}.ds-saved-top{display:flex;justify-content:space-between;align-items:baseline;color:#97A9BC;font-size:12px}.ds-saved-top b{color:#F4F7FB;font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}.ds-saved-lines{display:flex;gap:11px;margin-top:8px;color:#97A9BC;font-size:11px}.ds-saved-lines span{display:flex;align-items:center;gap:5px}.ds-saved-lines i{width:6px;height:6px;border-radius:50%;background:currentColor}.ds-imran{color:#E03A2F}.ds-bambang{color:#F0A500}.ds-danii{color:#2F6FD0}"
+    },
+    {
+      "name": "Cash Entry",
+      "kind": "input",
+      "description": "Borderless display-size ringgit entry with a hairline rule.",
+      "html": "<label class=\"ds-cash\"><span>Cash in hand</span><div><b>RM</b><input inputmode=\"decimal\" placeholder=\"0.00\" value=\"240.00\"></div><i></i></label>",
+      "css": ".ds-cash{display:block;background:#081428;font-family:-apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif}.ds-cash>span{color:#97A9BC;font-size:15px;font-weight:500}.ds-cash div{display:flex;align-items:baseline;gap:8px;margin-top:7px}.ds-cash b{color:#97A9BC;font-size:20px;font-weight:500}.ds-cash input{flex:1;min-width:0;border:0;background:transparent;color:#F4F7FB;font:300 34px/1.1 -apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif;font-variant-numeric:tabular-nums;padding:0}.ds-cash input:focus{outline:none}.ds-cash i{display:block;height:1px;background:#23395A;margin-top:9px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Midnight Transit",
+    "overview": "CargasCalc is a route map for one shared pot. The cash in hand is the junction; each person is a coloured line leaving it; the amount still owed to them is the bright tail of that line, and what they already took is the dim track behind it. The world comes from the KL rail diagram read at night — enamel navy, porcelain lettering, and three inks that stay identifiable at a glance — while the controls underneath are ordinary iPhone controls.\n\nThe screen is one continuous map sheet, not a stack of cards. Type does the hierarchy: a light, large cash figure at the top, a poster-scale payout at each station, and small tracked captions for the arithmetic. Colour is reserved for the three lines and never carries meaning alone; every coloured state is also written in words.",
+    "keyCharacteristics": [
+      "Deep midnight ground with a single vertical light fall.",
+      "Three fixed line inks: scarlet Imran, amber Bambang, cobalt Danii.",
+      "Porcelain text; secondary and tertiary tints are blue-grey, never neutral grey.",
+      "One horizontal route bar and three station rails; no decorative side stripes.",
+      "Native iOS navigation, lists, sheets, text fields, and decimal pads."
+    ],
+    "rules": [
+      { "name": "The Line-Ink Rule", "body": "Only the three routes carry hue. Text, chrome, and backgrounds stay in the blue-grey family; a fourth accent never appears.", "section": "colors" },
+      { "name": "The Written-State Rule", "body": "A negative payout is not signalled by red alone: the row says 'owes' and 'over the share' beside the figure.", "section": "colors" },
+      { "name": "The Money-Is-The-Display Rule", "body": "The largest object on the screen is always an amount, never a title, icon, or decorative graphic.", "section": "typography" },
+      { "name": "The No-Glass Rule", "body": "No custom blur, frosted card, or translucent overlay. If a surface needs separation, change its tone or add a hairline.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the four inputs and three payouts on one screen at the default text size.",
+      "Do pair every colour-coded fact with words or position.",
+      "Do use monospaced digits for every amount.",
+      "Do let the rail run continuously between stations.",
+      "Do keep the primary button the only porcelain-filled element."
+    ],
+    "donts": [
+      "Don't add a fourth accent colour; the three lines are the whole palette.",
+      "Don't turn station rows into cards or add a coloured bar down one edge.",
+      "Don't use gradient text, glass, or celebratory motion.",
+      "Don't add mascots, badges, streaks, or ranking.",
+      "Don't move the cash field behind a tab, sheet, or onboarding step."
+    ]
+  }
+}
