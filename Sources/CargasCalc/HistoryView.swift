@@ -8,13 +8,16 @@ struct HistoryView: View {
 
     var body: some View {
         NavigationStack {
-            Group {
+            ZStack {
+                Transit.ground
+                    .ignoresSafeArea()
+
                 if history.records.isEmpty {
-                    ContentUnavailableView(
-                        "No saved splits",
-                        systemImage: "clock",
-                        description: Text("Tap Save to history to keep a calculation.")
-                    )
+                    ContentUnavailableView {
+                        Label("No saved splits", systemImage: "clock.arrow.circlepath")
+                    } description: {
+                        Text("Save a calculation and it will wait here.")
+                    }
                 } else {
                     List {
                         ForEach(history.records) { record in
@@ -23,9 +26,13 @@ struct HistoryView: View {
                             } label: {
                                 HistoryRow(record: record)
                             }
+                            .listRowBackground(Transit.panel)
+                            .listRowSeparatorTint(Transit.hairline)
                         }
                         .onDelete { history.delete(at: $0) }
                     }
+                    .listStyle(.plain)
+                    .scrollContentBackground(.hidden)
                 }
             }
             .navigationTitle("History")
@@ -63,25 +70,32 @@ private struct HistoryRow: View {
     var body: some View {
         let split = record.split
 
-        VStack(alignment: .leading, spacing: 6) {
-            HStack {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .firstTextBaseline) {
                 Text(record.date.formatted(date: .abbreviated, time: .shortened))
                     .font(.caption)
-                    .foregroundStyle(.secondary)
-                Spacer()
-                Text(Money.format(split.pot))
-                    .font(.headline.monospacedDigit())
+                    .foregroundStyle(Transit.secondary)
+                Spacer(minLength: 8)
+                MoneyFigure(cents: split.pot, size: .compact)
             }
 
-            HStack(spacing: 12) {
+            HStack(spacing: 11) {
                 ForEach(Split.people.indices, id: \.self) { index in
-                    Text("\(Split.people[index]) \(Money.format(split.payouts[index]))")
-                        .font(.caption.monospacedDigit())
+                    HStack(spacing: 5) {
+                        Circle()
+                            .fill(Transit.line(index))
+                            .frame(width: 6, height: 6)
+                        Text("\(Split.people[index]) \(Money.format(split.payouts[index]))")
+                            .font(.caption2.monospacedDigit())
+                            .foregroundStyle(Transit.secondary)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.75)
+                    }
                 }
             }
-            .foregroundStyle(.secondary)
         }
-        .padding(.vertical, 2)
+        .padding(.vertical, 4)
+        .accessibilityElement(children: .combine)
     }
 }
 
@@ -95,27 +109,80 @@ private struct RecordDetailView: View {
     }
 
     var body: some View {
-        if let record {
-            Form {
-                Section("Results") {
-                    SplitBreakdown(split: record.split)
-                }
+        ZStack {
+            Transit.ground
+                .ignoresSafeArea()
 
-                Section("Inputs") {
-                    LabeledContent("Cash in hand", value: Money.format(record.cash))
-                    LabeledContent("Taken early", value: Money.format(record.advances.reduce(0, +)))
-                }
+            if let record {
+                let split = record.split
 
-                Section {
-                    Text("Saved \(record.date.formatted(date: .long, time: .shortened))")
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(record.date.formatted(date: .long, time: .shortened))
+                            .font(.caption)
+                            .foregroundStyle(Transit.secondary)
+                            .padding(.top, 10)
+
+                        Text("Total pot")
+                            .font(.caption)
+                            .foregroundStyle(Transit.secondary)
+                            .padding(.top, 22)
+                        MoneyFigure(cents: split.pot, size: .display)
+                            .padding(.top, 2)
+
+                        PotRouteBar(split: split)
+                            .padding(.top, 18)
+
+                        Hairline()
+                            .padding(.top, 6)
+
+                        VStack(spacing: 0) {
+                            ForEach(Split.people.indices, id: \.self) { index in
+                                StationSummary(
+                                    index: index,
+                                    split: split,
+                                    isLast: index == Split.people.count - 1
+                                )
+                            }
+                        }
+
+                        Hairline()
+
+                        HStack {
+                            Text("Cash in hand")
+                                .font(.subheadline)
+                                .foregroundStyle(Transit.secondary)
+                            Spacer()
+                            MoneyFigure(cents: record.cash, size: .compact)
+                        }
+                        .padding(.top, 16)
+
+                        HStack {
+                            Text("Taken early")
+                                .font(.subheadline)
+                                .foregroundStyle(Transit.secondary)
+                            Spacer()
+                            MoneyFigure(cents: record.advances.reduce(0, +), size: .compact)
+                        }
+                        .padding(.top, 10)
+
+                        Text("Saved \(record.date.formatted(date: .abbreviated, time: .shortened))")
+                            .font(.footnote)
+                            .foregroundStyle(Transit.tertiary)
+                            .padding(.top, 28)
+                            .padding(.bottom, 36)
+                    }
+                    .padding(.horizontal, 20)
                 }
+            } else {
+                ContentUnavailableView("Split deleted", systemImage: "trash")
             }
-            .navigationTitle("Saved split")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItemGroup(placement: .topBarTrailing) {
+        }
+        .navigationTitle("Saved split")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                if let record {
                     ShareLink(item: record.summary) {
                         Image(systemName: "square.and.arrow.up")
                     }
@@ -126,18 +193,25 @@ private struct RecordDetailView: View {
                     }
                 }
             }
-            .sheet(isPresented: $isEditing) {
+        }
+        .sheet(isPresented: $isEditing) {
+            if let record {
                 EditSplitView(record: record)
+                    .presentationBackground(Transit.ink)
             }
-        } else {
-            ContentUnavailableView("Split deleted", systemImage: "trash")
         }
     }
+}
+
+private enum EditField: Hashable {
+    case cash
+    case advance(Int)
 }
 
 private struct EditSplitView: View {
     @Environment(HistoryStore.self) private var history
     @Environment(\.dismiss) private var dismiss
+    @FocusState private var focused: EditField?
 
     let record: SplitRecord
     @State private var cashText: String
@@ -152,21 +226,50 @@ private struct EditSplitView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Cash in hand") {
-                    TextField("", text: $cashText)
-                        .keyboardType(.decimalPad)
+                Section {
+                    HStack(spacing: 6) {
+                        Text("RM")
+                            .font(.callout)
+                            .foregroundStyle(Transit.secondary)
+                        TextField("0.00", text: $cashText)
+                            .keyboardType(.decimalPad)
+                            .multilineTextAlignment(.trailing)
+                            .font(.body.monospacedDigit())
+                            .focused($focused, equals: .cash)
+                            .accessibilityLabel("Cash in hand in ringgit")
+                    }
+                } header: {
+                    Text("Cash in hand")
+                        .foregroundStyle(Transit.secondary)
                 }
+                .listRowBackground(Transit.panel)
 
-                Section("Taken early") {
+                Section {
                     ForEach(Split.people.indices, id: \.self) { index in
-                        LabeledContent(Split.people[index]) {
-                            TextField("", text: $advanceTexts[index])
+                        HStack(spacing: 6) {
+                            Text(Split.people[index])
+                            Spacer(minLength: 12)
+                            Text("RM")
+                                .font(.callout)
+                                .foregroundStyle(Transit.secondary)
+                            TextField("0.00", text: $advanceTexts[index])
                                 .keyboardType(.decimalPad)
                                 .multilineTextAlignment(.trailing)
+                                .font(.body.monospacedDigit())
+                                .focused($focused, equals: .advance(index))
+                                .accessibilityLabel(
+                                    "Amount \(Split.people[index]) took early, in ringgit"
+                                )
                         }
                     }
+                } header: {
+                    Text("Taken early")
+                        .foregroundStyle(Transit.secondary)
                 }
+                .listRowBackground(Transit.panel)
             }
+            .scrollContentBackground(.hidden)
+            .background(Transit.ground)
             .navigationTitle("Edit split")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -183,6 +286,12 @@ private struct EditSplitView: View {
                             advances: advanceTexts.map(Money.parse)
                         )
                         dismiss()
+                    }
+                }
+                ToolbarItemGroup(placement: .keyboard) {
+                    Spacer()
+                    Button("Done") {
+                        focused = nil
                     }
                 }
             }

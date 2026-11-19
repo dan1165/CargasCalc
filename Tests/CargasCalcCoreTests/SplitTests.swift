@@ -38,6 +38,8 @@ final class SplitTests: XCTestCase {
     func testFormatting() {
         XCTAssertEqual(Money.format(275_000), "RM 2,750.00")
         XCTAssertEqual(Money.format(91_666), "RM 916.66")
+        XCTAssertEqual(Money.number(275_000), "2,750.00")
+        XCTAssertEqual(Money.number(-10_000), "-100.00")
     }
 
     func testRecordRoundTrip() throws {

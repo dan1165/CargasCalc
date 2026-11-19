@@ -13,8 +13,13 @@ public enum Money {
         .grouping(.automatic)
         .precision(.fractionLength(2))
 
+    /// The amount without a currency prefix, e.g. "2,000.50".
+    public static func number(_ cents: Int) -> String {
+        (Double(cents) / 100).formatted(style)
+    }
+
     public static func format(_ cents: Int) -> String {
-        "RM " + (Double(cents) / 100).formatted(style)
+        "RM " + number(cents)
     }
 }
 
