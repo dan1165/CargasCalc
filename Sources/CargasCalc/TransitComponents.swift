@@ -10,7 +10,7 @@ struct StationRail: View {
         VStack(spacing: 0) {
             Rectangle()
                 .fill(color.opacity(0.5))
-                .frame(width: 2, height: 12)
+                .frame(width: 2, height: 18)
 
             Circle()
                 .fill(color)
@@ -155,41 +155,43 @@ struct StationSummary: View {
         HStack(alignment: .top, spacing: 14) {
             StationRail(color: Transit.line(index), isLast: isLast)
 
-            VStack(alignment: .leading, spacing: 5) {
-                Text(Split.people[index])
-                    .font(.headline)
-                    .foregroundStyle(Transit.porcelain)
-                Text(
-                    "took \(Money.format(split.advances[index])) · " +
-                    "share \(Money.format(split.shares[index]))"
-                )
-                .font(.caption)
-                .foregroundStyle(Transit.secondary)
-                .monospacedDigit()
-            }
-
-            Spacer(minLength: 8)
-
-            VStack(alignment: .trailing, spacing: 2) {
-                if payout < 0 {
-                    Text("owes \(Money.format(-payout))")
-                        .font(.system(.title3, design: .default, weight: .light))
-                        .monospacedDigit()
+            HStack(alignment: .top, spacing: 8) {
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(Split.people[index])
+                        .font(.headline)
                         .foregroundStyle(Transit.porcelain)
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.7)
-                    Text("over the share")
-                        .font(.caption2)
-                        .foregroundStyle(Transit.secondary)
-                } else {
-                    MoneyFigure(cents: payout)
-                    Text("gets now")
-                        .font(.caption2)
-                        .foregroundStyle(Transit.secondary)
+                    Text(
+                        "took \(Money.format(split.advances[index])) · " +
+                        "share \(Money.format(split.shares[index]))"
+                    )
+                    .font(.caption)
+                    .foregroundStyle(Transit.secondary)
+                    .monospacedDigit()
+                }
+
+                Spacer(minLength: 8)
+
+                VStack(alignment: .trailing, spacing: 2) {
+                    if payout < 0 {
+                        Text("owes \(Money.format(-payout))")
+                            .font(.system(.title3, design: .default, weight: .light))
+                            .monospacedDigit()
+                            .foregroundStyle(Transit.porcelain)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.7)
+                        Text("over the share")
+                            .font(.caption2)
+                            .foregroundStyle(Transit.secondary)
+                    } else {
+                        MoneyFigure(cents: payout)
+                        Text("gets now")
+                            .font(.caption2)
+                            .foregroundStyle(Transit.secondary)
+                    }
                 }
             }
+            .padding(.vertical, 14)
         }
-        .padding(.vertical, 14)
         .accessibilityElement(children: .combine)
     }
 }

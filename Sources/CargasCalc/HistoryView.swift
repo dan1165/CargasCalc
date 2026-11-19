@@ -165,12 +165,7 @@ private struct RecordDetailView: View {
                             MoneyFigure(cents: record.advances.reduce(0, +), size: .compact)
                         }
                         .padding(.top, 10)
-
-                        Text("Saved \(record.date.formatted(date: .abbreviated, time: .shortened))")
-                            .font(.footnote)
-                            .foregroundStyle(Transit.tertiary)
-                            .padding(.top, 28)
-                            .padding(.bottom, 36)
+                        .padding(.bottom, 40)
                     }
                     .padding(.horizontal, 20)
                 }

@@ -10,7 +10,7 @@ enum Transit {
     static let hairline = Color(red: 35 / 255, green: 57 / 255, blue: 90 / 255)
     static let porcelain = Color(red: 244 / 255, green: 247 / 255, blue: 251 / 255)
     static let secondary = Color(red: 151 / 255, green: 169 / 255, blue: 188 / 255)
-    static let tertiary = Color(red: 106 / 255, green: 126 / 255, blue: 150 / 255)
+    static let tertiary = Color(red: 122 / 255, green: 142 / 255, blue: 166 / 255)
 
     static let imran = Color(red: 224 / 255, green: 58 / 255, blue: 47 / 255)
     static let bambang = Color(red: 240 / 255, green: 165 / 255, blue: 0 / 255)

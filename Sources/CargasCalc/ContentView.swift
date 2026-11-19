@@ -14,6 +14,8 @@ struct ContentView: View {
     @State private var savePulse = 0
     @State private var justSaved = false
     @FocusState private var focused: MoneyInput?
+    @ScaledMetric(relativeTo: .callout) private var advanceFieldWidth: CGFloat = 92
+    @ScaledMetric(relativeTo: .largeTitle) private var cashSize: CGFloat = 44
 
     private var split: Split {
         Split(cash: Money.parse(cashText), advances: advanceTexts.map(Money.parse))
@@ -100,7 +102,7 @@ struct ContentView: View {
                     .foregroundStyle(Transit.secondary)
 
                 TextField("0.00", text: $cashText)
-                    .font(.system(.largeTitle, design: .default, weight: .light).monospacedDigit())
+                    .font(.system(size: cashSize, weight: .light).monospacedDigit())
                     .foregroundStyle(Transit.porcelain)
                     .keyboardType(.decimalPad)
                     .focused($focused, equals: .cash)
@@ -118,7 +120,7 @@ struct ContentView: View {
             HStack(alignment: .top) {
                 metric("Total pot", split.pot)
                 Spacer(minLength: 20)
-                metric("Each share", split.shares.first ?? 0)
+                metric("Taken early", split.advances.reduce(0, +))
             }
 
             PotRouteBar(split: split)
@@ -200,7 +202,7 @@ struct ContentView: View {
                         .font(.callout.monospacedDigit())
                         .foregroundStyle(Transit.porcelain)
                         .focused($focused, equals: .advance(index))
-                        .frame(width: 92)
+                        .frame(width: advanceFieldWidth)
                         .padding(.vertical, 6)
                         .padding(.horizontal, 9)
                         .background(
@@ -212,8 +214,8 @@ struct ContentView: View {
                         )
                 }
             }
+            .padding(.vertical, 14)
         }
-        .padding(.vertical, 14)
     }
 
     private var saveBlock: some View {
