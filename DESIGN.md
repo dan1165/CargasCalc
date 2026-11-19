@@ -5,11 +5,10 @@ colors:
   ink: "#081428"
   deep: "#050E1C"
   panel: "#0F213A"
-  panel-high: "#152C4C"
   hairline: "#23395A"
   porcelain: "#F4F7FB"
   secondary: "#97A9BC"
-  tertiary: "#6A7E96"
+  tertiary: "#7A8EA6"
   line-imran: "#E03A2F"
   line-bambang: "#F0A500"
   line-danii: "#2F6FD0"
@@ -97,11 +96,11 @@ A midnight enamel ground carrying porcelain type and three transit inks.
 - **Cobalt line** (#2F6FD0): Danii's route segment, station dot, and bar cell.
 
 ### Neutral
-- **Deep enamel** (#050E1C): the top of the background gradient, behind the navigation bar.
+- **Deep enamel** (#050E1C): the bottom of the background gradient, below the fold.
 - **Panel enamel** (#0F213A): advance fields and history rows.
 - **Hairline** (#23395A): rules under the cash field and between saved records.
 - **Secondary blue-grey** (#97A9BC): labels, share and advance facts.
-- **Tertiary blue-grey** (#6A7E96): footnotes and the "RM" prefix on small fields.
+- **Tertiary blue-grey** (#7A8EA6): footnotes and the "RM" prefix on small fields.
 
 ### Named Rules
 **The Line-Ink Rule.** Only the three routes carry hue. Text, chrome, and backgrounds stay in the blue-grey family; a fourth accent never appears.
@@ -128,7 +127,7 @@ A midnight enamel ground carrying porcelain type and three transit inks.
 
 ## Layout
 
-A single 20 pt inset sheet runs the full height. The cash field sits at the top under a large navigation title; the pot metrics and route bar follow at 30 pt; the three station rows are separated by 14 pt vertical padding with no dividers, so the rail reads as one continuous line. The save button closes the sheet at 28 pt after the last station. Targets are at least 44 pt tall, and the four inputs plus three payouts fit a 393 × 852 pt phone without scrolling.
+A single 20 pt inset sheet runs the full height. The cash field sits at the top under a large navigation title; the pot metrics and route bar follow at 22 pt; the three station rows are separated by 12 pt vertical padding with no dividers, so the rail reads as one continuous line. The save button closes the sheet at 24 pt after the last station. Targets are at least 44 pt tall. At the default text size the four inputs, three payouts, and the save action fit a 393 × 852 pt phone without scrolling; at accessibility sizes the sheet scrolls instead of compressing.
 
 On Dynamic Type the sheet scrolls rather than compressing; names and amounts wrap or scale, and the rail stretches with the tallest row.
 
@@ -149,7 +148,7 @@ The route bar is a 12 pt strip with 4 pt continuous corners, divided into three 
 - **Shape:** full capsule, 52 pt minimum height.
 - **Primary:** porcelain fill, route-ink label, headline weight; full width.
 - **Pressed:** 0.72 opacity, no scale or bounce.
-- **Disabled:** 0.38 opacity; the label stays "Save split".
+- **Disabled:** 0.5 opacity; the label stays "Save split" until a save lands, then reads "Saved to history".
 
 ### Inputs / Fields
 - **Cash field:** borderless, 34 pt light monospaced digits, RM prefix in secondary, hairline underline.
@@ -163,10 +162,10 @@ The route bar is a 12 pt strip with 4 pt continuous corners, divided into three 
 - History is a sheet with its own stack, Clear/Done actions, and native swipe-to-delete.
 
 ### Pot Route Bar (signature)
-One horizontal strip divided into three equal cells. Each cell is the person's share: the dim leading portion is what they took early, the bright trailing portion is what they still get. A neutral two-swatch legend names the encoding. A zero pot reads "Waiting for cash in hand".
+One horizontal strip divided into three equal cells. Each cell is the person's share: the dim leading portion is what they took early, the bright trailing portion is what they still get. A names row under the bar ties each cell to a person, and one caption line names the encoding. A zero pot reads "Waiting for cash in hand".
 
 ### Station Row (signature)
-A 22 pt rail column carries a 2 pt line in the person's ink through a ringed station dot; the line continues between rows and stops at the last. The row pairs the name and share with a poster-scale payout, then an inline "Took early" field. Negative payouts replace the figure with "owes …" and "over the share".
+A 22 pt rail column carries a 2 pt line in the person's ink through a ringed station dot; the line continues between rows and stops at the last. The row pairs the name and share with a poster-scale payout, then an inline "Took early" field. When the type grows the name and payout stack instead of truncating. Negative payouts replace the figure with "owes …" and "over the share".
 
 ## Do's and Don'ts
 

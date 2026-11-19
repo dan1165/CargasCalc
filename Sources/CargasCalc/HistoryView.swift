@@ -66,6 +66,7 @@ struct HistoryView: View {
 
 private struct HistoryRow: View {
     let record: SplitRecord
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
         let split = record.split
@@ -79,23 +80,35 @@ private struct HistoryRow: View {
                 MoneyFigure(cents: split.pot, size: .compact)
             }
 
-            HStack(spacing: 11) {
-                ForEach(Split.people.indices, id: \.self) { index in
-                    HStack(spacing: 5) {
-                        Circle()
-                            .fill(Transit.line(index))
-                            .frame(width: 6, height: 6)
-                        Text("\(Split.people[index]) \(Money.format(split.payouts[index]))")
-                            .font(.caption2.monospacedDigit())
-                            .foregroundStyle(Transit.secondary)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.75)
+            if dynamicTypeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: 5) {
+                    ForEach(Split.people.indices, id: \.self) { index in
+                        payoutPair(index, split: split)
+                    }
+                }
+            } else {
+                HStack(spacing: 11) {
+                    ForEach(Split.people.indices, id: \.self) { index in
+                        payoutPair(index, split: split)
                     }
                 }
             }
         }
         .padding(.vertical, 4)
         .accessibilityElement(children: .combine)
+    }
+
+    private func payoutPair(_ index: Int, split: Split) -> some View {
+        HStack(spacing: 5) {
+            Circle()
+                .fill(Transit.line(index))
+                .frame(width: 6, height: 6)
+            Text("\(Split.people[index]) \(Money.format(split.payouts[index]))")
+                .font(.caption2.monospacedDigit())
+                .foregroundStyle(Transit.secondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.75)
+        }
     }
 }
 
@@ -141,6 +154,7 @@ private struct RecordDetailView: View {
                                 StationSummary(
                                     index: index,
                                     split: split,
+                                    isFirst: index == 0,
                                     isLast: index == Split.people.count - 1
                                 )
                             }
@@ -218,6 +232,10 @@ private struct EditSplitView: View {
         _advanceTexts = State(initialValue: record.advances.map { Self.text(for: $0) })
     }
 
+    private var editedSplit: Split {
+        Split(cash: Money.parse(cashText), advances: advanceTexts.map(Money.parse))
+    }
+
     var body: some View {
         NavigationStack {
             Form {
@@ -226,6 +244,7 @@ private struct EditSplitView: View {
                         Text("RM")
                             .font(.callout)
                             .foregroundStyle(Transit.secondary)
+                            .accessibilityHidden(true)
                         TextField("0.00", text: $cashText)
                             .keyboardType(.decimalPad)
                             .multilineTextAlignment(.trailing)
@@ -247,6 +266,7 @@ private struct EditSplitView: View {
                             Text("RM")
                                 .font(.callout)
                                 .foregroundStyle(Transit.secondary)
+                                .accessibilityHidden(true)
                             TextField("0.00", text: $advanceTexts[index])
                                 .keyboardType(.decimalPad)
                                 .multilineTextAlignment(.trailing)
@@ -265,6 +285,7 @@ private struct EditSplitView: View {
             }
             .scrollContentBackground(.hidden)
             .background(Transit.ground)
+            .scrollDismissesKeyboard(.interactively)
             .navigationTitle("Edit split")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
@@ -282,6 +303,7 @@ private struct EditSplitView: View {
                         )
                         dismiss()
                     }
+                    .disabled(editedSplit.pot == 0)
                 }
                 ToolbarItemGroup(placement: .keyboard) {
                     Spacer()

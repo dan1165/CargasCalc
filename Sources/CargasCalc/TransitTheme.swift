@@ -6,7 +6,6 @@ enum Transit {
     static let ink = Color(red: 8 / 255, green: 20 / 255, blue: 40 / 255)
     static let deep = Color(red: 5 / 255, green: 14 / 255, blue: 28 / 255)
     static let panel = Color(red: 15 / 255, green: 33 / 255, blue: 58 / 255)
-    static let panelHigh = Color(red: 21 / 255, green: 44 / 255, blue: 76 / 255)
     static let hairline = Color(red: 35 / 255, green: 57 / 255, blue: 90 / 255)
     static let porcelain = Color(red: 244 / 255, green: 247 / 255, blue: 251 / 255)
     static let secondary = Color(red: 151 / 255, green: 169 / 255, blue: 188 / 255)
@@ -26,7 +25,10 @@ enum Transit {
 
     static var ground: LinearGradient {
         LinearGradient(
-            colors: [deep, ink],
+            colors: [
+                Color(red: 11 / 255, green: 29 / 255, blue: 56 / 255),
+                deep,
+            ],
             startPoint: .top,
             endPoint: .bottom
         )

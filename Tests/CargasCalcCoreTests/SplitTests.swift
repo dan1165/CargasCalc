@@ -33,6 +33,8 @@ final class SplitTests: XCTestCase {
         XCTAssertEqual(Money.parse("RM 2,750.50"), 275_050)
         XCTAssertEqual(Money.parse(""), 0)
         XCTAssertEqual(Money.parse("500"), 50_000)
+        XCTAssertEqual(Money.parse(String(repeating: "9", count: 20)), Int.max)
+        XCTAssertEqual(Money.parse("1.2.3"), 0)
     }
 
     func testFormatting() {
@@ -64,5 +66,11 @@ final class SplitTests: XCTestCase {
         XCTAssertTrue(record.summary.contains("Cash in hand: RM 2,000.00"))
         XCTAssertTrue(record.summary.contains("Imran: gets RM 416.67"))
         XCTAssertTrue(record.summary.contains("Danii: gets RM 916.66"))
+    }
+
+    func testSummaryNamesADebt() {
+        let record = SplitRecord(cash: 10_000, advances: [20_000, 0, 0])
+        XCTAssertTrue(record.summary.contains("Imran: owes RM 100.00"))
+        XCTAssertFalse(record.summary.contains("Imran: gets"))
     }
 }

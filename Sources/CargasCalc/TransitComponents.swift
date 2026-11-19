@@ -4,13 +4,19 @@ import CargasCalcCore
 /// A station node on the route: the line changes colour at each person.
 struct StationRail: View {
     let color: Color
+    let isFirst: Bool
     let isLast: Bool
 
     var body: some View {
         VStack(spacing: 0) {
-            Rectangle()
-                .fill(color.opacity(0.5))
-                .frame(width: 2, height: 18)
+            if isFirst {
+                Color.clear
+                    .frame(width: 2, height: 18)
+            } else {
+                Rectangle()
+                    .fill(color.opacity(0.5))
+                    .frame(width: 2, height: 18)
+            }
 
             Circle()
                 .fill(color)
@@ -56,7 +62,8 @@ struct MoneyFigure: View {
                 .monospacedDigit()
                 .foregroundStyle(Transit.porcelain)
                 .lineLimit(1)
-                .minimumScaleFactor(0.6)
+                .minimumScaleFactor(size == .compact ? 0.75 : 1)
+                .fixedSize(horizontal: size != .compact, vertical: false)
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(Money.format(cents))
@@ -79,13 +86,66 @@ struct MoneyFigure: View {
     }
 }
 
+/// The figure and its caption, with the debt state written out.
+struct PayoutBlock: View {
+    let payout: Int
+
+    var body: some View {
+        VStack(alignment: .trailing, spacing: 2) {
+            if payout < 0 {
+                Text("owes \(Money.format(-payout))")
+                    .font(.system(.title3, design: .default, weight: .light).monospacedDigit())
+                    .foregroundStyle(Transit.porcelain)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.7)
+                Text("over the share")
+                    .font(.caption2)
+                    .foregroundStyle(Transit.secondary)
+            } else {
+                MoneyFigure(cents: payout)
+                Text("gets now")
+                    .font(.caption2)
+                    .foregroundStyle(Transit.secondary)
+            }
+        }
+        .accessibilityElement(children: .combine)
+    }
+}
+
+/// Name and share on the left, payout on the right; stacks when the type grows.
+struct StationHeader<Identity: View>: View {
+    let payout: Int
+    let identity: Identity
+
+    init(payout: Int, @ViewBuilder identity: () -> Identity) {
+        self.payout = payout
+        self.identity = identity()
+    }
+
+    var body: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(alignment: .firstTextBaseline) {
+                identity
+                Spacer(minLength: 8)
+                PayoutBlock(payout: payout)
+            }
+
+            VStack(alignment: .leading, spacing: 6) {
+                identity
+                PayoutBlock(payout: payout)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+        }
+    }
+}
+
 /// One horizontal route: each person's cell is their share, the bright tail is
 /// what they still get, the dim head is what they took early.
 struct PotRouteBar: View {
     let split: Split
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 9) {
+        VStack(alignment: .leading, spacing: 7) {
             HStack(spacing: 3) {
                 ForEach(Split.people.indices, id: \.self) { index in
                     segment(index)
@@ -94,20 +154,25 @@ struct PotRouteBar: View {
             .frame(height: 12)
             .clipShape(RoundedRectangle(cornerRadius: 4, style: .continuous))
 
-            HStack(spacing: 12) {
-                legend("gets now", bright: true)
-                legend("took early", bright: false)
-                Spacer(minLength: 4)
-                Text(
-                    split.pot == 0
-                        ? "Waiting for cash in hand"
-                        : "Payouts total \(Money.format(split.payouts.reduce(0, +)))"
-                )
+            HStack(spacing: 3) {
+                ForEach(Split.people.indices, id: \.self) { index in
+                    HStack(spacing: 4) {
+                        Circle()
+                            .fill(Transit.line(index))
+                            .frame(width: 4, height: 4)
+                        Text(Split.people[index])
+                            .font(.caption2)
+                            .foregroundStyle(Transit.secondary)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.8)
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+            }
+
+            Text("Bright = gets now · dim = took early")
                 .font(.caption2)
                 .foregroundStyle(Transit.tertiary)
-                .lineLimit(1)
-                .minimumScaleFactor(0.8)
-            }
         }
     }
 
@@ -127,19 +192,10 @@ struct PotRouteBar: View {
         }
         .accessibilityElement(children: .ignore)
         .accessibilityLabel(
-            "\(Split.people[index]) gets \(Money.format(split.payouts[index]))"
+            split.payouts[index] < 0
+                ? "\(Split.people[index]) owes \(Money.format(-split.payouts[index]))"
+                : "\(Split.people[index]) gets \(Money.format(split.payouts[index]))"
         )
-    }
-
-    private func legend(_ title: String, bright: Bool) -> some View {
-        HStack(spacing: 5) {
-            RoundedRectangle(cornerRadius: 2, style: .continuous)
-                .fill(Transit.porcelain.opacity(bright ? 1 : 0.22))
-                .frame(width: 10, height: 6)
-            Text(title)
-                .font(.caption2)
-                .foregroundStyle(Transit.secondary)
-        }
     }
 }
 
@@ -147,50 +203,36 @@ struct PotRouteBar: View {
 struct StationSummary: View {
     let index: Int
     let split: Split
+    let isFirst: Bool
     let isLast: Bool
 
     private var payout: Int { split.payouts[index] }
 
     var body: some View {
         HStack(alignment: .top, spacing: 14) {
-            StationRail(color: Transit.line(index), isLast: isLast)
+            StationRail(
+                color: Transit.line(index),
+                isFirst: isFirst,
+                isLast: isLast
+            )
 
-            HStack(alignment: .top, spacing: 8) {
-                VStack(alignment: .leading, spacing: 5) {
-                    Text(Split.people[index])
-                        .font(.headline)
-                        .foregroundStyle(Transit.porcelain)
-                    Text(
-                        "took \(Money.format(split.advances[index])) · " +
-                        "share \(Money.format(split.shares[index]))"
-                    )
-                    .font(.caption)
-                    .foregroundStyle(Transit.secondary)
-                    .monospacedDigit()
-                }
-
-                Spacer(minLength: 8)
-
-                VStack(alignment: .trailing, spacing: 2) {
-                    if payout < 0 {
-                        Text("owes \(Money.format(-payout))")
-                            .font(.system(.title3, design: .default, weight: .light))
-                            .monospacedDigit()
+            VStack(alignment: .leading, spacing: 9) {
+                StationHeader(payout: payout) {
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(Split.people[index])
+                            .font(.headline)
                             .foregroundStyle(Transit.porcelain)
-                            .lineLimit(1)
-                            .minimumScaleFactor(0.7)
-                        Text("over the share")
-                            .font(.caption2)
-                            .foregroundStyle(Transit.secondary)
-                    } else {
-                        MoneyFigure(cents: payout)
-                        Text("gets now")
-                            .font(.caption2)
-                            .foregroundStyle(Transit.secondary)
+                        Text(
+                            "took \(Money.format(split.advances[index])) · " +
+                            "share \(Money.format(split.shares[index]))"
+                        )
+                        .font(.caption)
+                        .foregroundStyle(Transit.secondary)
+                        .monospacedDigit()
                     }
                 }
             }
-            .padding(.vertical, 14)
+            .padding(.vertical, 12)
         }
         .accessibilityElement(children: .combine)
     }

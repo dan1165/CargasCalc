@@ -4,8 +4,11 @@ public enum Money {
     /// Parses "2,000.50", "RM 2000", etc. into whole cents. Bad input counts as zero.
     public static func parse(_ text: String) -> Int {
         guard !text.contains("-") else { return 0 }
-        let cleaned = text.filter { $0.isNumber || $0 == "." }
-        return max(0, Int(((Double(cleaned) ?? 0) * 100).rounded()))
+        let cleaned = text.filter { $0.isASCII && ($0.isNumber || $0 == ".") }
+        guard let value = Double(cleaned), value.isFinite else { return 0 }
+        let cents = (value * 100).rounded()
+        guard cents < Double(Int.max) else { return Int.max }
+        return max(0, Int(cents))
     }
 
     private static let style: FloatingPointFormatStyle<Double> = .number
@@ -81,8 +84,12 @@ public struct SplitRecord: Codable, Identifiable, Sendable {
         ]
         for index in Split.people.indices {
             let person = Split.people[index]
+            let payout = split.payouts[index]
+            let amount = payout < 0
+                ? "owes \(Money.format(-payout))"
+                : "gets \(Money.format(payout))"
             lines.append(
-                "\(person): gets \(Money.format(split.payouts[index])) " +
+                "\(person): \(amount) " +
                 "(share \(Money.format(split.shares[index])), " +
                 "took \(Money.format(split.advances[index])))"
             )

@@ -16,6 +16,7 @@ struct ContentView: View {
     @FocusState private var focused: MoneyInput?
     @ScaledMetric(relativeTo: .callout) private var advanceFieldWidth: CGFloat = 92
     @ScaledMetric(relativeTo: .largeTitle) private var cashSize: CGFloat = 44
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     private var split: Split {
         Split(cash: Money.parse(cashText), advances: advanceTexts.map(Money.parse))
@@ -39,7 +40,7 @@ struct ContentView: View {
                             .padding(.top, 10)
 
                         potBlock
-                            .padding(.top, 30)
+                            .padding(.top, 22)
 
                         Hairline()
                             .padding(.top, 26)
@@ -47,7 +48,7 @@ struct ContentView: View {
                         stationBlock
 
                         saveBlock
-                            .padding(.top, 28)
+                            .padding(.top, 24)
                             .padding(.bottom, 36)
                     }
                     .padding(.horizontal, 20)
@@ -100,6 +101,7 @@ struct ContentView: View {
                 Text("RM")
                     .font(.title3.weight(.medium))
                     .foregroundStyle(Transit.secondary)
+                    .accessibilityHidden(true)
 
                 TextField("0.00", text: $cashText)
                     .font(.system(size: cashSize, weight: .light).monospacedDigit())
@@ -116,11 +118,18 @@ struct ContentView: View {
     }
 
     private var potBlock: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            HStack(alignment: .top) {
-                metric("Total pot", split.pot)
-                Spacer(minLength: 20)
-                metric("Taken early", split.advances.reduce(0, +))
+        VStack(alignment: .leading, spacing: 13) {
+            if dynamicTypeSize.isAccessibilitySize {
+                VStack(alignment: .leading, spacing: 10) {
+                    metric("Total pot", split.pot)
+                    metric("Taken early", split.advances.reduce(0, +))
+                }
+            } else {
+                HStack(alignment: .top) {
+                    metric("Total pot", split.pot)
+                    Spacer(minLength: 12)
+                    metric("Taken early", split.advances.reduce(0, +))
+                }
             }
 
             PotRouteBar(split: split)
@@ -150,11 +159,12 @@ struct ContentView: View {
         return HStack(alignment: .top, spacing: 14) {
             StationRail(
                 color: Transit.line(index),
+                isFirst: index == 0,
                 isLast: index == Split.people.count - 1
             )
 
             VStack(alignment: .leading, spacing: 9) {
-                HStack(alignment: .firstTextBaseline) {
+                StationHeader(payout: payout) {
                     VStack(alignment: .leading, spacing: 2) {
                         Text(Split.people[index])
                             .font(.headline)
@@ -162,26 +172,6 @@ struct ContentView: View {
                         Text("share \(Money.format(split.shares[index]))")
                             .font(.caption.monospacedDigit())
                             .foregroundStyle(Transit.secondary)
-                    }
-
-                    Spacer(minLength: 8)
-
-                    VStack(alignment: .trailing, spacing: 2) {
-                        if payout < 0 {
-                            Text("owes \(Money.format(-payout))")
-                                .font(.system(.title3, design: .default, weight: .light).monospacedDigit())
-                                .foregroundStyle(Transit.porcelain)
-                                .lineLimit(1)
-                                .minimumScaleFactor(0.7)
-                            Text("over the share")
-                                .font(.caption2)
-                                .foregroundStyle(Transit.secondary)
-                        } else {
-                            MoneyFigure(cents: payout)
-                            Text("gets now")
-                                .font(.caption2)
-                                .foregroundStyle(Transit.secondary)
-                        }
                     }
                 }
 
@@ -195,6 +185,7 @@ struct ContentView: View {
                     Text("RM")
                         .font(.caption2)
                         .foregroundStyle(Transit.tertiary)
+                        .accessibilityHidden(true)
 
                     TextField("0.00", text: $advanceTexts[index])
                         .keyboardType(.decimalPad)
@@ -203,8 +194,8 @@ struct ContentView: View {
                         .foregroundStyle(Transit.porcelain)
                         .focused($focused, equals: .advance(index))
                         .frame(width: advanceFieldWidth)
-                        .padding(.vertical, 6)
                         .padding(.horizontal, 9)
+                        .frame(minHeight: 44)
                         .background(
                             Transit.panel,
                             in: RoundedRectangle(cornerRadius: 8, style: .continuous)
@@ -213,14 +204,23 @@ struct ContentView: View {
                             "Amount \(Split.people[index]) took early, in ringgit"
                         )
                 }
+                .contentShape(Rectangle())
+                .simultaneousGesture(
+                    TapGesture().onEnded {
+                        focused = .advance(index)
+                    }
+                )
             }
-            .padding(.vertical, 14)
+            .padding(.vertical, 12)
         }
     }
 
     private var saveBlock: some View {
         VStack(spacing: 11) {
             Button {
+                guard !justSaved else { return }
+                focused = nil
+                justSaved = true
                 history.save(split)
                 savePulse += 1
             } label: {
@@ -230,8 +230,8 @@ struct ContentView: View {
                 )
             }
             .buttonStyle(PrimaryButtonStyle())
-            .disabled(!hasAmount)
-            .opacity(hasAmount ? 1 : 0.38)
+            .disabled(!hasAmount || justSaved)
+            .opacity(hasAmount && !justSaved ? 1 : 0.5)
             .sensoryFeedback(.success, trigger: savePulse)
 
             Text("Payouts always add up to the cash in hand.")
@@ -242,7 +242,6 @@ struct ContentView: View {
         }
         .task(id: savePulse) {
             guard savePulse > 0 else { return }
-            justSaved = true
             try? await Task.sleep(for: .seconds(1.6))
             justSaved = false
         }
