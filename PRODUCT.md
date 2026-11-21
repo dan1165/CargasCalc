@@ -20,7 +20,7 @@ A shared pot is not divided by the cash in hand alone — early withdrawals are 
 
 ## Operating Context
 
-Ringgit (RM) amounts in Malaysia. The group pools cash for trips, meals, and shared purchases; one or more people take money out before the final split. Calculations happen in the moment, then the result is saved, reopened, edited, or shared as plain text.
+Ringgit (RM) amounts in Malaysia. The group pools cash for trips, meals, and shared purchases; one or more people take money out before the final split. Calculations happen in the moment, then the result is saved, reopened, edited, or shared as plain text or an image card. A whole history can leave the app as a CSV file.
 
 ## Capabilities and Constraints
 
@@ -28,6 +28,7 @@ Ringgit (RM) amounts in Malaysia. The group pools cash for trips, meals, and sha
 - Money is integer cents; no floating-point split maths. Leftover cents go one each to the earliest people.
 - Payouts equal shares minus advances and always sum to the cash in hand.
 - History persists as JSON in `UserDefaults`: save, open, edit, share, delete, clear.
+- A saved split can be shared as a rendered PNG card; the whole history can be exported as CSV.
 - Editing a saved record preserves its `id` and `date`.
 - Forced dark appearance is a confirmed product constraint.
 - iOS 26.0 minimum install version; SwiftUI/xtool; built only through GitHub Actions.

@@ -11,6 +11,7 @@ Repository: [github.com/dan1165/CargasCalc](https://github.com/dan1165/CargasCal
 - See the total pot, each person's equal share, and what they still receive.
 - The split is drawn as a midnight transit route: one pot junction, three coloured lines, and a bright tail for what each person still gets.
 - Save splits to history, open, edit, share, or delete them.
+- Share a saved split as an image card, or export the whole history as CSV.
 - Money is handled in integer cents; no floating-point split math.
 
 The three names are currently hard-coded in `Split.people` (`Imran`, `Bambang`, `Danii`).
@@ -50,8 +51,8 @@ swift build --target CargasCalcCoreTests
 
 ## Structure
 
-- `Sources/CargasCalcCore` — money parsing/formatting, split math, saved record model (Foundation only)
-- `Sources/CargasCalc` — native SwiftUI app and `UserDefaults` history store
+- `Sources/CargasCalcCore` — money parsing/formatting, split math, saved record model, CSV export (Foundation only)
+- `Sources/CargasCalc` — native SwiftUI app, share card, system share sheet, and `UserDefaults` history store
 - `Tests/CargasCalcCoreTests` — split, money, record and summary tests
 
 The app, product, module and bundle are all `CargasCalc` / `com.daniisaahir.cargascalc`. This is a fresh app identity: it does not read data from the old `Calc` app. Uninstall the old app to remove its saved history.

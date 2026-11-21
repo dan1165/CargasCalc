@@ -167,6 +167,9 @@ One horizontal strip divided into three equal cells. Each cell is the person's s
 ### Station Row (signature)
 A 22 pt rail column carries a 2 pt line in the person's ink through a ringed station dot; the line continues between rows and stops at the last. The row pairs the name and share with a poster-scale payout, then an inline "Took early" field. When the type grows the name and payout stack instead of truncating. Negative payouts replace the figure with "owes …" and "over the share".
 
+### Share Card
+The same sheet at 390 × 560 pt, rendered at 3× through `ImageRenderer`: wordmark and date, total pot, route bar, three station summaries, and a one-line footer. It keeps the dark ground, the three inks, and the rail; it never introduces a second palette or a photo.
+
 ## Do's and Don'ts
 
 ### Do:
@@ -175,6 +178,7 @@ A 22 pt rail column carries a 2 pt line in the person's ink through a ringed sta
 - **Do** use monospaced digits for every amount.
 - **Do** let the rail run continuously between stations.
 - **Do** keep the primary button the only porcelain-filled element.
+- **Do** keep shared image cards on the same ground, three inks, and route grammar.
 
 ### Don't:
 - **Don't** add a fourth accent colour; the three lines are the whole palette.

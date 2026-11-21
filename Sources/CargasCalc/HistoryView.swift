@@ -1,3 +1,4 @@
+import Foundation
 import SwiftUI
 import CargasCalcCore
 
@@ -5,6 +6,9 @@ struct HistoryView: View {
     @Environment(HistoryStore.self) private var history
     @Environment(\.dismiss) private var dismiss
     @State private var confirmClear = false
+    @State private var shareItems: [Any] = []
+    @State private var showShare = false
+    @State private var exportFailed = false
 
     var body: some View {
         NavigationStack {
@@ -46,6 +50,17 @@ struct HistoryView: View {
                     }
                 }
                 ToolbarItem(placement: .topBarTrailing) {
+                    if !history.records.isEmpty {
+                        Button {
+                            exportCSV()
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                        .accessibilityLabel("Export history")
+                    }
+                }
+
+                ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         dismiss()
                     }
@@ -60,6 +75,32 @@ struct HistoryView: View {
                     history.clear()
                 }
             }
+            .sheet(isPresented: $showShare) {
+                ActivitySheet(items: shareItems)
+            }
+            .alert("Couldn't export history", isPresented: $exportFailed) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text("Try again.")
+            }
+        }
+    }
+
+    private func exportCSV() {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        let name = "CargasCalc-history-\(formatter.string(from: Date())).csv"
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent(name)
+
+        do {
+            try HistoryExport.csv(history.records)
+                .write(to: url, atomically: true, encoding: .utf8)
+            shareItems = [url]
+            showShare = true
+        } catch {
+            exportFailed = true
         }
     }
 }
@@ -112,10 +153,18 @@ private struct HistoryRow: View {
     }
 }
 
+private enum DetailSheet: String, Identifiable {
+    case edit
+    case share
+
+    var id: String { rawValue }
+}
+
 private struct RecordDetailView: View {
     @Environment(HistoryStore.self) private var history
     let id: UUID
-    @State private var isEditing = false
+    @State private var activeSheet: DetailSheet?
+    @State private var shareItems: [Any] = []
 
     private var record: SplitRecord? {
         history.records.first { $0.id == id }
@@ -192,23 +241,39 @@ private struct RecordDetailView: View {
         .toolbar {
             ToolbarItemGroup(placement: .topBarTrailing) {
                 if let record {
-                    ShareLink(item: record.summary) {
+                    Button {
+                        share(record)
+                    } label: {
                         Image(systemName: "square.and.arrow.up")
                     }
-                    .accessibilityLabel("Share")
+                    .accessibilityLabel("Share as image")
 
                     Button("Edit") {
-                        isEditing = true
+                        activeSheet = .edit
                     }
                 }
             }
         }
-        .sheet(isPresented: $isEditing) {
-            if let record {
-                EditSplitView(record: record)
-                    .presentationBackground(Transit.ink)
+        .sheet(item: $activeSheet) { sheet in
+            switch sheet {
+            case .edit:
+                if let record {
+                    EditSplitView(record: record)
+                        .presentationBackground(Transit.ink)
+                }
+            case .share:
+                ActivitySheet(items: shareItems)
             }
         }
+    }
+
+    private func share(_ record: SplitRecord) {
+        var items: [Any] = [record.summary]
+        if let image = SplitImageRenderer.render(record) {
+            items.insert(image, at: 0)
+        }
+        shareItems = items
+        activeSheet = .share
     }
 }
 

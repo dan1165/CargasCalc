@@ -13,7 +13,7 @@ iOS 26 SwiftUI app built with xtool (no `.xcodeproj`). It splits a cash pot thre
 
 ## Tests
 
-- All logic lives in `Sources/CargasCalcCore`; tests are in `Tests/CargasCalcCoreTests`.
+- All logic lives in `Sources/CargasCalcCore`; tests are in `Tests/CargasCalcCoreTests`. CSV export (`HistoryExport`) lives there too and is covered by tests.
 - `swift test` at the repo root fails on Linux because SwiftPM also compiles the SwiftUI `CargasCalc` target.
 - Compile check that works here: `swift build --target CargasCalcCoreTests`.
 - To run the tests, copy `Sources/CargasCalcCore` and `Tests/CargasCalcCoreTests` into a scratch SwiftPM package with only those two targets and run `swift test` there.
@@ -27,7 +27,7 @@ iOS 26 SwiftUI app built with xtool (no `.xcodeproj`). It splits a cash pot thre
 - The three names are hard-coded in `Split.people`. Changing names or headcount changes rounding and every saved record — update tests and `SplitRecord` handling deliberately.
 - `SplitRecord` is the persisted history model (JSON in `UserDefaults`). Editing a record must preserve its `id` and `date`.
 - Display name **CargasCalc** comes from `Info.plist` via `infoPath` in `xtool.yml`. Product, module and bundle ID are all `CargasCalc` / `com.daniisaahir.cargascalc`; this is a fresh identity and does not read data from the old `Calc` app.
-- The UI is native SwiftUI in forced dark mode with a white tint. `TransitTheme.swift` owns the Midnight Transit palette (enamel ground, porcelain text, three line inks) and `TransitComponents.swift` owns the route bar, station rail, money figures and primary button. `ContentView` and `HistoryView` compose those; navigation, text fields, sheets and lists stay stock. Keep new screens on the same tokens rather than inventing a second theme.
+- The UI is native SwiftUI in forced dark mode with a white tint. `SplitShareCard` renders the saved split to a PNG through `ImageRenderer`; `ActivitySheet` wraps the system share sheet for images and CSV files. `TransitTheme.swift` owns the Midnight Transit palette (enamel ground, porcelain text, three line inks) and `TransitComponents.swift` owns the route bar, station rail, money figures and primary button. `ContentView` and `HistoryView` compose those; navigation, text fields, sheets and lists stay stock. Keep new screens on the same tokens rather than inventing a second theme.
 - The direction and tokens are recorded in `PRODUCT.md`, `DESIGN.md`, `.impeccable/design.json` and `.impeccable/surfaces/`. Update them with the code when the visual system changes.
 - Deployment target is iOS **26.0**: the minimum install version, not the SDK. The build uses Swift tools 6.3 and the latest iOS SDK/Xcode available on the macOS 26 runner. The native UI only needs iOS 17 APIs, so the target can be lowered if older devices matter.
 - App icon: `icon.png` via `iconPath` in `xtool.yml`.

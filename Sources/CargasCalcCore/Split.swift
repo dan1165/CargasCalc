@@ -21,6 +21,15 @@ public enum Money {
         (Double(cents) / 100).formatted(style)
     }
 
+    /// A plain decimal for machines, e.g. "2000.50"; never grouped, always ".".
+    public static func decimal(_ cents: Int) -> String {
+        String(
+            format: "%.2f",
+            locale: Locale(identifier: "en_US_POSIX"),
+            Double(cents) / 100
+        )
+    }
+
     public static func format(_ cents: Int) -> String {
         "RM " + number(cents)
     }

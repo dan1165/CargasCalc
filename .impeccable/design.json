@@ -4,31 +4,185 @@
   "title": "Design System: CargasCalc",
   "extensions": {
     "colorMeta": {
-      "ink": { "role": "neutral", "displayName": "Route Ink", "canonical": "#081428", "tonalRamp": ["#03070E", "#050B16", "#081428", "#0C1D36", "#112846", "#173356", "#1E3F68", "#274E7C"] },
-      "deep": { "role": "neutral", "displayName": "Deep Enamel", "canonical": "#050E1C", "tonalRamp": ["#02060C", "#030A12", "#050E1C", "#081528", "#0B1D36", "#0F2645", "#143056", "#1A3C69"] },
-      "panel": { "role": "neutral", "displayName": "Panel Enamel", "canonical": "#0F213A", "tonalRamp": ["#060D17", "#091526", "#0C1B30", "#0F213A", "#132945", "#183352", "#1D3E62", "#244B74"] },
-      "hairline": { "role": "neutral", "displayName": "Chart Hairline", "canonical": "#23395A", "tonalRamp": ["#0B1320", "#111D30", "#172A43", "#1D3552", "#23395A", "#2E4A70", "#3B5C87", "#4A6F9E"] },
-      "porcelain": { "role": "primary", "displayName": "Porcelain", "canonical": "#F4F7FB", "tonalRamp": ["#1A2430", "#2C3A49", "#455565", "#637486", "#8796A5", "#AFBAC5", "#D7DDE4", "#F4F7FB"] },
-      "secondary": { "role": "neutral", "displayName": "Platform Blue-Grey", "canonical": "#97A9BC", "tonalRamp": ["#1C2631", "#2C3946", "#404F5F", "#566878", "#6E8193", "#8295A6", "#97A9BC", "#B6C3D0"] },
-      "line-imran": { "role": "secondary", "displayName": "Scarlet Line", "canonical": "#E03A2F", "tonalRamp": ["#2B0A08", "#4D1210", "#731B17", "#99231D", "#BE2C24", "#E03A2F", "#EC6960", "#F49A94"] },
-      "line-bambang": { "role": "secondary", "displayName": "Amber Line", "canonical": "#F0A500", "tonalRamp": ["#2E1F00", "#4D3400", "#6E4A00", "#8F6000", "#BC7E00", "#F0A500", "#FFC24A", "#FFD98A"] },
-      "line-danii": { "role": "secondary", "displayName": "Cobalt Line", "canonical": "#2F6FD0", "tonalRamp": ["#071427", "#0C2140", "#12305C", "#193F79", "#215097", "#2F6FD0", "#5D93E3", "#95B9EF"] }
+      "ink": {
+        "role": "neutral",
+        "displayName": "Route Ink",
+        "canonical": "#081428",
+        "tonalRamp": [
+          "#03070E",
+          "#050B16",
+          "#081428",
+          "#0C1D36",
+          "#112846",
+          "#173356",
+          "#1E3F68",
+          "#274E7C"
+        ]
+      },
+      "deep": {
+        "role": "neutral",
+        "displayName": "Deep Enamel",
+        "canonical": "#050E1C",
+        "tonalRamp": [
+          "#02060C",
+          "#030A12",
+          "#050E1C",
+          "#081528",
+          "#0B1D36",
+          "#0F2645",
+          "#143056",
+          "#1A3C69"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel Enamel",
+        "canonical": "#0F213A",
+        "tonalRamp": [
+          "#060D17",
+          "#091526",
+          "#0C1B30",
+          "#0F213A",
+          "#132945",
+          "#183352",
+          "#1D3E62",
+          "#244B74"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Chart Hairline",
+        "canonical": "#23395A",
+        "tonalRamp": [
+          "#0B1320",
+          "#111D30",
+          "#172A43",
+          "#1D3552",
+          "#23395A",
+          "#2E4A70",
+          "#3B5C87",
+          "#4A6F9E"
+        ]
+      },
+      "porcelain": {
+        "role": "primary",
+        "displayName": "Porcelain",
+        "canonical": "#F4F7FB",
+        "tonalRamp": [
+          "#1A2430",
+          "#2C3A49",
+          "#455565",
+          "#637486",
+          "#8796A5",
+          "#AFBAC5",
+          "#D7DDE4",
+          "#F4F7FB"
+        ]
+      },
+      "secondary": {
+        "role": "neutral",
+        "displayName": "Platform Blue-Grey",
+        "canonical": "#97A9BC",
+        "tonalRamp": [
+          "#1C2631",
+          "#2C3946",
+          "#404F5F",
+          "#566878",
+          "#6E8193",
+          "#8295A6",
+          "#97A9BC",
+          "#B6C3D0"
+        ]
+      },
+      "line-imran": {
+        "role": "secondary",
+        "displayName": "Scarlet Line",
+        "canonical": "#E03A2F",
+        "tonalRamp": [
+          "#2B0A08",
+          "#4D1210",
+          "#731B17",
+          "#99231D",
+          "#BE2C24",
+          "#E03A2F",
+          "#EC6960",
+          "#F49A94"
+        ]
+      },
+      "line-bambang": {
+        "role": "secondary",
+        "displayName": "Amber Line",
+        "canonical": "#F0A500",
+        "tonalRamp": [
+          "#2E1F00",
+          "#4D3400",
+          "#6E4A00",
+          "#8F6000",
+          "#BC7E00",
+          "#F0A500",
+          "#FFC24A",
+          "#FFD98A"
+        ]
+      },
+      "line-danii": {
+        "role": "secondary",
+        "displayName": "Cobalt Line",
+        "canonical": "#2F6FD0",
+        "tonalRamp": [
+          "#071427",
+          "#0C2140",
+          "#12305C",
+          "#193F79",
+          "#215097",
+          "#2F6FD0",
+          "#5D93E3",
+          "#95B9EF"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Cash Display", "purpose": "Cash in hand and saved total pot; light monospaced digits." },
-      "title": { "displayName": "Station Payout", "purpose": "Each person's payout; the second-largest object on the screen." },
-      "headline": { "displayName": "Name / Action", "purpose": "Person names and the primary button label." },
-      "body": { "displayName": "Editable Amount", "purpose": "Text fields and list labels." },
-      "label": { "displayName": "Arithmetic Label", "purpose": "Share, gets now, legends, timestamps." }
+      "display": {
+        "displayName": "Cash Display",
+        "purpose": "Cash in hand and saved total pot; light monospaced digits."
+      },
+      "title": {
+        "displayName": "Station Payout",
+        "purpose": "Each person's payout; the second-largest object on the screen."
+      },
+      "headline": {
+        "displayName": "Name / Action",
+        "purpose": "Person names and the primary button label."
+      },
+      "body": {
+        "displayName": "Editable Amount",
+        "purpose": "Text fields and list labels."
+      },
+      "label": {
+        "displayName": "Arithmetic Label",
+        "purpose": "Share, gets now, legends, timestamps."
+      }
     },
     "shadows": [],
     "motion": [
-      { "name": "system-default", "value": "cubic-bezier(0.25, 0.1, 0.25, 1)", "purpose": "Only the system navigation, sheet, and keyboard transitions. No authored motion." }
+      {
+        "name": "system-default",
+        "value": "cubic-bezier(0.25, 0.1, 0.25, 1)",
+        "purpose": "Only the system navigation, sheet, and keyboard transitions. No authored motion."
+      }
     ],
     "breakpoints": [
-      { "name": "iphone-compact", "value": "393px" },
-      { "name": "iphone-large", "value": "430px" },
-      { "name": "ipad", "value": "768px" }
+      {
+        "name": "iphone-compact",
+        "value": "393px"
+      },
+      {
+        "name": "iphone-large",
+        "value": "430px"
+      },
+      {
+        "name": "ipad",
+        "value": "768px"
+      }
     ]
   },
   "components": [
@@ -76,6 +230,13 @@
       "description": "Borderless display-size ringgit entry with a hairline rule.",
       "html": "<label class=\"ds-cash\"><span>Cash in hand</span><div><b>RM</b><input inputmode=\"decimal\" placeholder=\"0.00\" value=\"240.00\"></div><i></i></label>",
       "css": ".ds-cash{display:block;background:#081428;font-family:-apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif}.ds-cash>span{color:#97A9BC;font-size:15px;font-weight:500}.ds-cash div{display:flex;align-items:baseline;gap:8px;margin-top:7px}.ds-cash b{color:#97A9BC;font-size:20px;font-weight:500}.ds-cash input{flex:1;min-width:0;border:0;background:transparent;color:#F4F7FB;font:300 34px/1.1 -apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif;font-variant-numeric:tabular-nums;padding:0}.ds-cash input:focus{outline:none}.ds-cash i{display:block;height:1px;background:#23395A;margin-top:9px}"
+    },
+    {
+      "name": "Share Card",
+      "kind": "custom",
+      "description": "The saved split rendered as a 390×560 card for image sharing.",
+      "html": "<div class=\"ds-share\"><div class=\"ds-share-head\"><span>CARGASCALC</span><small>19 Nov, 09:41</small></div><div class=\"ds-share-k\">Total pot</div><div class=\"ds-share-pot\">RM 320.00</div><div class=\"ds-share-bar\"><i class=\"ds-imran\"></i><i class=\"ds-bambang\"></i><i class=\"ds-danii\"></i></div><div class=\"ds-share-foot\">Three equal shares · exact to the sen</div></div>",
+      "css": ".ds-share{width:390px;height:560px;padding:24px;box-sizing:border-box;background:linear-gradient(180deg,#0B1D38,#050E1C);color:#F4F7FB;font-family:-apple-system,BlinkMacSystemFont,'SF Pro',system-ui,sans-serif}.ds-share-head{display:flex;justify-content:space-between;align-items:baseline;color:#97A9BC;font-size:12px;font-weight:600;letter-spacing:2.4px}.ds-share-head small{color:#7A8EA6;font-size:11px;font-weight:400;letter-spacing:0}.ds-share-k{margin-top:24px;color:#97A9BC;font-size:12px}.ds-share-pot{font-size:34px;font-weight:300;font-variant-numeric:tabular-nums}.ds-share-bar{display:flex;gap:3px;height:12px;border-radius:4px;overflow:hidden;margin-top:18px}.ds-share-bar i{flex:1;background:currentColor}.ds-share-foot{margin-top:auto;padding-top:220px;color:#7A8EA6;font-size:10px}.ds-imran{color:#E03A2F}.ds-bambang{color:#F0A500}.ds-danii{color:#2F6FD0}"
     }
   ],
   "narrative": {
@@ -89,17 +250,34 @@
       "Native iOS navigation, lists, sheets, text fields, and decimal pads."
     ],
     "rules": [
-      { "name": "The Line-Ink Rule", "body": "Only the three routes carry hue. Text, chrome, and backgrounds stay in the blue-grey family; a fourth accent never appears.", "section": "colors" },
-      { "name": "The Written-State Rule", "body": "A negative payout is not signalled by red alone: the row says 'owes' and 'over the share' beside the figure.", "section": "colors" },
-      { "name": "The Money-Is-The-Display Rule", "body": "The largest object on the screen is always an amount, never a title, icon, or decorative graphic.", "section": "typography" },
-      { "name": "The No-Glass Rule", "body": "No custom blur, frosted card, or translucent overlay. If a surface needs separation, change its tone or add a hairline.", "section": "elevation" }
+      {
+        "name": "The Line-Ink Rule",
+        "body": "Only the three routes carry hue. Text, chrome, and backgrounds stay in the blue-grey family; a fourth accent never appears.",
+        "section": "colors"
+      },
+      {
+        "name": "The Written-State Rule",
+        "body": "A negative payout is not signalled by red alone: the row says 'owes' and 'over the share' beside the figure.",
+        "section": "colors"
+      },
+      {
+        "name": "The Money-Is-The-Display Rule",
+        "body": "The largest object on the screen is always an amount, never a title, icon, or decorative graphic.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Glass Rule",
+        "body": "No custom blur, frosted card, or translucent overlay. If a surface needs separation, change its tone or add a hairline.",
+        "section": "elevation"
+      }
     ],
     "dos": [
       "Do keep the four inputs and three payouts on one screen at the default text size.",
       "Do pair every colour-coded fact with words or position.",
       "Do use monospaced digits for every amount.",
       "Do let the rail run continuously between stations.",
-      "Do keep the primary button the only porcelain-filled element."
+      "Do keep the primary button the only porcelain-filled element.",
+      "Do keep shared image cards on the same ground, three inks, and route grammar."
     ],
     "donts": [
       "Don't add a fourth accent colour; the three lines are the whole palette.",
