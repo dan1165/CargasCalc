@@ -167,6 +167,9 @@ One horizontal strip divided into three equal cells. Each cell is the person's s
 ### Station Row (signature)
 A 22 pt rail column carries a 2 pt line in the person's ink through a ringed station dot; the line continues between rows and stops at the last. The row pairs the name and share with a poster-scale payout, then an inline "Took early" field. When the type grows the name and payout stack instead of truncating. Negative payouts replace the figure with "owes …" and "over the share".
 
+### Settle Up
+Plain rows under a "Settle up" label: the sentence "Imran pays Bambang" on the left, the compact amount on the right. One row per transfer; two over-people produce two rows. A caption, "Cash in hand covers the rest of each payout.", appears only when cash in hand is above zero. No cards, rails, or extra colour: the sentence itself is the explanation.
+
 ### Share Card
 The same sheet at 390 × 560 pt, rendered at 3× through `ImageRenderer`: wordmark and date, total pot, route bar, three station summaries, and a one-line footer. It keeps the dark ground, the three inks, and the rail; it never introduces a second palette or a photo.
 
