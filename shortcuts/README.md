@@ -41,4 +41,4 @@ It is deterministic apart from regenerated action UUIDs.
 
 ## Verification
 
-The plist structure, action references, variable references, token-string ranges and conditional groups were validated in this workspace. The arithmetic and settle-up text were checked against the Swift and Scriptable versions for one-over, two-over, unequal-creditor, rounding and no-over cases. The shortcut has not been imported or run on an iPhone in this environment.
+The shortcut passes the Shortcuts Playground validator at `--target-macos 26`, and `test_shortcut.py` runs the generated action graph end to end for eight cases (no-over, one-over, two-over, unequal creditors, rounding, zero). The arithmetic and settle-up text match the Swift and Scriptable versions. The shortcut has not been imported or run on an iPhone in this environment.
