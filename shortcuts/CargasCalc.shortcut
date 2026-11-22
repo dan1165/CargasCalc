@@ -1,0 +1,3642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>WFWorkflowActions</key>
+	<array>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.ask</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Cash</string>
+				<key>UUID</key>
+				<string>5CE2ADF1-72F9-49B5-8D78-A1287B606DC4</string>
+				<key>WFAskActionPrompt</key>
+				<string>Cash in hand (RM)</string>
+				<key>WFInputType</key>
+				<string>Number</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.ask</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Imran</string>
+				<key>UUID</key>
+				<string>C17086A6-5F5A-49F4-A89B-428147FE01EC</string>
+				<key>WFAskActionPrompt</key>
+				<string>Imran took (RM)</string>
+				<key>WFInputType</key>
+				<string>Number</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.ask</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Bambang</string>
+				<key>UUID</key>
+				<string>4B7E48AF-E79D-4B26-BB72-F3A023C6EB71</string>
+				<key>WFAskActionPrompt</key>
+				<string>Bambang took (RM)</string>
+				<key>WFInputType</key>
+				<string>Number</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.ask</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Danii</string>
+				<key>UUID</key>
+				<string>26E06E42-E2A7-4A37-B114-D512EB4F8FA1</string>
+				<key>WFAskActionPrompt</key>
+				<string>Danii took (RM)</string>
+				<key>WFInputType</key>
+				<string>Number</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Cash Value</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{0, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Cash</string>
+								<key>OutputUUID</key>
+								<string>5CE2ADF1-72F9-49B5-8D78-A1287B606DC4</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>￼</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>ED598EA6-5516-4A9A-9610-FCF673BA3048</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Cash Text</string>
+				<key>UUID</key>
+				<string>8E16DCDB-3DDA-4645-92BF-BFCD8FF73C91</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Cash Value</string>
+						<key>OutputUUID</key>
+						<string>ED598EA6-5516-4A9A-9610-FCF673BA3048</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Total Cents</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{10, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Imran</string>
+								<key>OutputUUID</key>
+								<string>C17086A6-5F5A-49F4-A89B-428147FE01EC</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{14, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Bambang</string>
+								<key>OutputUUID</key>
+								<string>4B7E48AF-E79D-4B26-BB72-F3A023C6EB71</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{18, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Danii</string>
+								<key>OutputUUID</key>
+								<string>26E06E42-E2A7-4A37-B114-D512EB4F8FA1</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{6, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Cash</string>
+								<key>OutputUUID</key>
+								<string>5CE2ADF1-72F9-49B5-8D78-A1287B606DC4</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>rint((￼ + ￼ + ￼ + ￼) * 100)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>3D75E9D5-F5C2-46DB-B05C-2A3B6D869E68</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Pot</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Total Cents</string>
+								<key>OutputUUID</key>
+								<string>3D75E9D5-F5C2-46DB-B05C-2A3B6D869E68</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>0B24C55A-6BAA-4EFA-B2A2-34F3532CC6E3</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Pot Text</string>
+				<key>UUID</key>
+				<string>EA8C03B5-A254-4A24-9090-1D33BF9C8DD1</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Pot</string>
+						<key>OutputUUID</key>
+						<string>0B24C55A-6BAA-4EFA-B2A2-34F3532CC6E3</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Taken</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{10, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Bambang</string>
+								<key>OutputUUID</key>
+								<string>4B7E48AF-E79D-4B26-BB72-F3A023C6EB71</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{14, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Danii</string>
+								<key>OutputUUID</key>
+								<string>26E06E42-E2A7-4A37-B114-D512EB4F8FA1</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{6, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Imran</string>
+								<key>OutputUUID</key>
+								<string>C17086A6-5F5A-49F4-A89B-428147FE01EC</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>rint((￼ + ￼ + ￼) * 100) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>68A8A0E5-F441-4CEF-97E4-545D114A23DA</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Taken Text</string>
+				<key>UUID</key>
+				<string>45DF4AF6-C134-4244-99D1-3F65BA917849</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Taken</string>
+						<key>OutputUUID</key>
+						<string>68A8A0E5-F441-4CEF-97E4-545D114A23DA</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Share 1</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{7, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Total Cents</string>
+								<key>OutputUUID</key>
+								<string>3D75E9D5-F5C2-46DB-B05C-2A3B6D869E68</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>floor((￼ + 2) / 3)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>786EB293-955B-4AFA-A869-0ABFFF5CA511</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Share 1 Ringgit</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Share 1</string>
+								<key>OutputUUID</key>
+								<string>786EB293-955B-4AFA-A869-0ABFFF5CA511</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>309D64EB-C20F-442E-9135-091A031C9FB8</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Share 1 Text</string>
+				<key>UUID</key>
+				<string>FF17BFDD-59B4-4E75-BD5E-4DF6A109C61F</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Share 1 Ringgit</string>
+						<key>OutputUUID</key>
+						<string>309D64EB-C20F-442E-9135-091A031C9FB8</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Payout 1</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Share 1</string>
+								<key>OutputUUID</key>
+								<string>786EB293-955B-4AFA-A869-0ABFFF5CA511</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{10, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Imran</string>
+								<key>OutputUUID</key>
+								<string>C17086A6-5F5A-49F4-A89B-428147FE01EC</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼ - rint(￼ * 100))</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>D1C9583C-448D-4196-974A-A511CC8BBE21</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Payout 1 Ringgit</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 1</string>
+								<key>OutputUUID</key>
+								<string>D1C9583C-448D-4196-974A-A511CC8BBE21</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>05A86E9D-56D3-4E41-9BC0-11A108ECC7A9</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Payout 1 Text</string>
+				<key>UUID</key>
+				<string>C1F53A0D-8D1F-4401-8485-C3969C5FBA60</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Payout 1 Ringgit</string>
+						<key>OutputUUID</key>
+						<string>05A86E9D-56D3-4E41-9BC0-11A108ECC7A9</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Owed 1 Ringgit</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{5, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 1</string>
+								<key>OutputUUID</key>
+								<string>D1C9583C-448D-4196-974A-A511CC8BBE21</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>fabs(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>5E63342A-DAA2-4657-BAAA-E807F331BDDE</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Owed 1 Text</string>
+				<key>UUID</key>
+				<string>A21280DE-E97B-47B2-A23E-1D054C686879</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Owed 1 Ringgit</string>
+						<key>OutputUUID</key>
+						<string>5E63342A-DAA2-4657-BAAA-E807F331BDDE</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Share 2</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{7, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Total Cents</string>
+								<key>OutputUUID</key>
+								<string>3D75E9D5-F5C2-46DB-B05C-2A3B6D869E68</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>floor((￼ + 1) / 3)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>B3D99582-BAFA-42BC-9CE2-25A3D3D830C7</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Share 2 Ringgit</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Share 2</string>
+								<key>OutputUUID</key>
+								<string>B3D99582-BAFA-42BC-9CE2-25A3D3D830C7</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>1BF51828-F083-4FA4-BC35-EFA949572882</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Share 2 Text</string>
+				<key>UUID</key>
+				<string>F35E6573-E54E-421C-9FCB-89250AC5B54A</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Share 2 Ringgit</string>
+						<key>OutputUUID</key>
+						<string>1BF51828-F083-4FA4-BC35-EFA949572882</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Payout 2</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Share 2</string>
+								<key>OutputUUID</key>
+								<string>B3D99582-BAFA-42BC-9CE2-25A3D3D830C7</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{10, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Bambang</string>
+								<key>OutputUUID</key>
+								<string>4B7E48AF-E79D-4B26-BB72-F3A023C6EB71</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼ - rint(￼ * 100))</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>1CE4E815-9CE3-4CC2-8B31-7FE80EFA32D7</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Payout 2 Ringgit</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 2</string>
+								<key>OutputUUID</key>
+								<string>1CE4E815-9CE3-4CC2-8B31-7FE80EFA32D7</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>CAAAA088-9165-41DE-BFC0-F9531205B7EA</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Payout 2 Text</string>
+				<key>UUID</key>
+				<string>7D7856B9-2D51-4DEE-ADF7-8AF6C385A286</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Payout 2 Ringgit</string>
+						<key>OutputUUID</key>
+						<string>CAAAA088-9165-41DE-BFC0-F9531205B7EA</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Owed 2 Ringgit</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{5, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 2</string>
+								<key>OutputUUID</key>
+								<string>1CE4E815-9CE3-4CC2-8B31-7FE80EFA32D7</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>fabs(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>9B46E629-EA90-4A75-8889-FEAAA65A29AD</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Owed 2 Text</string>
+				<key>UUID</key>
+				<string>6C85A106-08F2-489E-B359-6B0E61572FCA</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Owed 2 Ringgit</string>
+						<key>OutputUUID</key>
+						<string>9B46E629-EA90-4A75-8889-FEAAA65A29AD</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Share 3</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{7, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Total Cents</string>
+								<key>OutputUUID</key>
+								<string>3D75E9D5-F5C2-46DB-B05C-2A3B6D869E68</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>floor((￼ + 0) / 3)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>490457DF-ECE7-4270-8D63-F64B5FA12947</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Share 3 Ringgit</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Share 3</string>
+								<key>OutputUUID</key>
+								<string>490457DF-ECE7-4270-8D63-F64B5FA12947</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>C25BEA26-8175-4626-84E2-325A1A4C3718</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Share 3 Text</string>
+				<key>UUID</key>
+				<string>C41681E5-BF18-4CCB-9E57-FD3770459EDA</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Share 3 Ringgit</string>
+						<key>OutputUUID</key>
+						<string>C25BEA26-8175-4626-84E2-325A1A4C3718</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Payout 3</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Share 3</string>
+								<key>OutputUUID</key>
+								<string>490457DF-ECE7-4270-8D63-F64B5FA12947</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{10, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Danii</string>
+								<key>OutputUUID</key>
+								<string>26E06E42-E2A7-4A37-B114-D512EB4F8FA1</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼ - rint(￼ * 100))</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>A4D023E1-956B-4C57-A647-D352E0B34C40</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Payout 3 Ringgit</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 3</string>
+								<key>OutputUUID</key>
+								<string>A4D023E1-956B-4C57-A647-D352E0B34C40</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>52CB520A-A24D-41EA-8AC9-4013A98A4CF7</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Payout 3 Text</string>
+				<key>UUID</key>
+				<string>7E3A2AE5-BC2E-4E70-9C65-B514F369D06C</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Payout 3 Ringgit</string>
+						<key>OutputUUID</key>
+						<string>52CB520A-A24D-41EA-8AC9-4013A98A4CF7</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Owed 3 Ringgit</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{5, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 3</string>
+								<key>OutputUUID</key>
+								<string>A4D023E1-956B-4C57-A647-D352E0B34C40</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>fabs(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>2C8C9F5F-B077-4A90-90E4-6B910DB20023</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Owed 3 Text</string>
+				<key>UUID</key>
+				<string>EE7E49F5-3AC0-4987-9D89-1998DD44CEB9</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Owed 3 Ringgit</string>
+						<key>OutputUUID</key>
+						<string>2C8C9F5F-B077-4A90-90E4-6B910DB20023</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>BD48A287-6C6C-479B-B6C2-6ADDF4A08F4C</string>
+				<key>WFCondition</key>
+				<integer>3</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Payout 1</string>
+						<key>OutputUUID</key>
+						<string>D1C9583C-448D-4196-974A-A511CC8BBE21</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberValue</key>
+				<string>0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{15, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Owed 1 Text</string>
+								<key>OutputUUID</key>
+								<string>A21280DE-E97B-47B2-A23E-1D054C686879</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{27, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Share 1 Text</string>
+								<key>OutputUUID</key>
+								<string>FF17BFDD-59B4-4E75-BD5E-4DF6A109C61F</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>Imran: owes RM ￼ (share RM ￼)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Line 1</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>BD48A287-6C6C-479B-B6C2-6ADDF4A08F4C</string>
+				<key>WFControlFlowMode</key>
+				<integer>1</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{15, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 1 Text</string>
+								<key>OutputUUID</key>
+								<string>C1F53A0D-8D1F-4401-8485-C3969C5FBA60</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{27, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Share 1 Text</string>
+								<key>OutputUUID</key>
+								<string>FF17BFDD-59B4-4E75-BD5E-4DF6A109C61F</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>Imran: gets RM ￼ (share RM ￼)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Line 1</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>BD48A287-6C6C-479B-B6C2-6ADDF4A08F4C</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>4646C30C-CCCB-4962-B606-450720CD03B7</string>
+				<key>WFCondition</key>
+				<integer>3</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Payout 2</string>
+						<key>OutputUUID</key>
+						<string>1CE4E815-9CE3-4CC2-8B31-7FE80EFA32D7</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberValue</key>
+				<string>0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{17, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Owed 2 Text</string>
+								<key>OutputUUID</key>
+								<string>6C85A106-08F2-489E-B359-6B0E61572FCA</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{29, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Share 2 Text</string>
+								<key>OutputUUID</key>
+								<string>F35E6573-E54E-421C-9FCB-89250AC5B54A</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>Bambang: owes RM ￼ (share RM ￼)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Line 2</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>4646C30C-CCCB-4962-B606-450720CD03B7</string>
+				<key>WFControlFlowMode</key>
+				<integer>1</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{17, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 2 Text</string>
+								<key>OutputUUID</key>
+								<string>7D7856B9-2D51-4DEE-ADF7-8AF6C385A286</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{29, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Share 2 Text</string>
+								<key>OutputUUID</key>
+								<string>F35E6573-E54E-421C-9FCB-89250AC5B54A</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>Bambang: gets RM ￼ (share RM ￼)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Line 2</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>4646C30C-CCCB-4962-B606-450720CD03B7</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>0ED79A2C-C641-488C-8655-37385F4EA602</string>
+				<key>WFCondition</key>
+				<integer>3</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Payout 3</string>
+						<key>OutputUUID</key>
+						<string>A4D023E1-956B-4C57-A647-D352E0B34C40</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberValue</key>
+				<string>0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{15, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Owed 3 Text</string>
+								<key>OutputUUID</key>
+								<string>EE7E49F5-3AC0-4987-9D89-1998DD44CEB9</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{27, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Share 3 Text</string>
+								<key>OutputUUID</key>
+								<string>C41681E5-BF18-4CCB-9E57-FD3770459EDA</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>Danii: owes RM ￼ (share RM ￼)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Line 3</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>0ED79A2C-C641-488C-8655-37385F4EA602</string>
+				<key>WFControlFlowMode</key>
+				<integer>1</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{15, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 3 Text</string>
+								<key>OutputUUID</key>
+								<string>7E3A2AE5-BC2E-4E70-9C65-B514F369D06C</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{27, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Share 3 Text</string>
+								<key>OutputUUID</key>
+								<string>C41681E5-BF18-4CCB-9E57-FD3770459EDA</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>Danii: gets RM ￼ (share RM ￼)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Line 3</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>0ED79A2C-C641-488C-8655-37385F4EA602</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.gettext</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Empty</string>
+				<key>UUID</key>
+				<string>9A5AF48B-6A91-440D-A3A1-65393E531185</string>
+				<key>WFTextActionText</key>
+				<string></string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{0, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Empty</string>
+								<key>OutputUUID</key>
+								<string>9A5AF48B-6A91-440D-A3A1-65393E531185</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>￼</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Settle</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>FD46EE0D-292D-4338-88E3-E70E2B94AA02</string>
+				<key>WFCondition</key>
+				<integer>3</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Payout 1</string>
+						<key>OutputUUID</key>
+						<string>D1C9583C-448D-4196-974A-A511CC8BBE21</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberValue</key>
+				<string>0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Debt 1</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{4, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 1</string>
+								<key>OutputUUID</key>
+								<string>D1C9583C-448D-4196-974A-A511CC8BBE21</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>0 - ￼</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>51B52BA8-7D89-4417-BE04-99F872C5191B</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>First Positive 1</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{12, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 2</string>
+								<key>OutputUUID</key>
+								<string>1CE4E815-9CE3-4CC2-8B31-7FE80EFA32D7</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{2, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 2</string>
+								<key>OutputUUID</key>
+								<string>1CE4E815-9CE3-4CC2-8B31-7FE80EFA32D7</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>((￼) + fabs(￼)) / 2</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>C4186F68-68F0-4C23-B8AF-632F1C98CDD1</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Second Positive 1</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{12, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 3</string>
+								<key>OutputUUID</key>
+								<string>A4D023E1-956B-4C57-A647-D352E0B34C40</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{2, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 3</string>
+								<key>OutputUUID</key>
+								<string>A4D023E1-956B-4C57-A647-D352E0B34C40</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>((￼) + fabs(￼)) / 2</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>D84AB1D0-CE76-4E64-8482-A2513A33E4B4</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>First Amount 1</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{100, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 1</string>
+								<key>OutputUUID</key>
+								<string>C4186F68-68F0-4C23-B8AF-632F1C98CDD1</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{106, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 1</string>
+								<key>OutputUUID</key>
+								<string>D84AB1D0-CE76-4E64-8482-A2513A33E4B4</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{13, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 1</string>
+								<key>OutputUUID</key>
+								<string>C4186F68-68F0-4C23-B8AF-632F1C98CDD1</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{20, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 1</string>
+								<key>OutputUUID</key>
+								<string>C4186F68-68F0-4C23-B8AF-632F1C98CDD1</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{26, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 1</string>
+								<key>OutputUUID</key>
+								<string>D84AB1D0-CE76-4E64-8482-A2513A33E4B4</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{45, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Debt 1</string>
+								<key>OutputUUID</key>
+								<string>51B52BA8-7D89-4417-BE04-99F872C5191B</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{51, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 1</string>
+								<key>OutputUUID</key>
+								<string>C4186F68-68F0-4C23-B8AF-632F1C98CDD1</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{56, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 1</string>
+								<key>OutputUUID</key>
+								<string>C4186F68-68F0-4C23-B8AF-632F1C98CDD1</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{62, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 1</string>
+								<key>OutputUUID</key>
+								<string>D84AB1D0-CE76-4E64-8482-A2513A33E4B4</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{7, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Debt 1</string>
+								<key>OutputUUID</key>
+								<string>51B52BA8-7D89-4417-BE04-99F872C5191B</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{74, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Debt 1</string>
+								<key>OutputUUID</key>
+								<string>51B52BA8-7D89-4417-BE04-99F872C5191B</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{80, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 1</string>
+								<key>OutputUUID</key>
+								<string>D84AB1D0-CE76-4E64-8482-A2513A33E4B4</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{85, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 1</string>
+								<key>OutputUUID</key>
+								<string>C4186F68-68F0-4C23-B8AF-632F1C98CDD1</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{91, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 1</string>
+								<key>OutputUUID</key>
+								<string>D84AB1D0-CE76-4E64-8482-A2513A33E4B4</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>floor((￼) * (￼) / ((￼) + (￼))) + ceil((fmod((￼) * (￼), (￼) + (￼)) - fmod((￼) * (￼), (￼) + (￼))) / ((￼) + (￼)))</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>9E4A76F2-3B80-45CD-A17B-0CE937122637</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Second Amount 1</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Debt 1</string>
+								<key>OutputUUID</key>
+								<string>51B52BA8-7D89-4417-BE04-99F872C5191B</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{7, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Amount 1</string>
+								<key>OutputUUID</key>
+								<string>9E4A76F2-3B80-45CD-A17B-0CE937122637</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) - (￼)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>68A68FFE-3467-422F-BFAA-9DE3A46D5755</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>First Value 1</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Amount 1</string>
+								<key>OutputUUID</key>
+								<string>9E4A76F2-3B80-45CD-A17B-0CE937122637</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>A878DEF8-8711-449E-ADDD-DE10F129CA91</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>First Text 1</string>
+				<key>UUID</key>
+				<string>0ECF7AA9-7C70-45E7-A45A-5BDEE00AA1E2</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>First Value 1</string>
+						<key>OutputUUID</key>
+						<string>A878DEF8-8711-449E-ADDD-DE10F129CA91</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Second Value 1</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Amount 1</string>
+								<key>OutputUUID</key>
+								<string>68A68FFE-3467-422F-BFAA-9DE3A46D5755</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>453E932A-A46C-4282-A024-D51E6DDFB2A0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Second Text 1</string>
+				<key>UUID</key>
+				<string>BCD92F72-73E5-4BB0-B147-19F37B0037D7</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Second Value 1</string>
+						<key>OutputUUID</key>
+						<string>453E932A-A46C-4282-A024-D51E6DDFB2A0</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>6430FF9A-6F90-4023-8DF3-5DB5BBA72845</string>
+				<key>WFCondition</key>
+				<integer>2</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>First Positive 1</string>
+						<key>OutputUUID</key>
+						<string>C4186F68-68F0-4C23-B8AF-632F1C98CDD1</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberValue</key>
+				<string>0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{0, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Settle</string>
+							</dict>
+							<key>{24, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Text 1</string>
+								<key>OutputUUID</key>
+								<string>0ECF7AA9-7C70-45E7-A45A-5BDEE00AA1E2</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>￼Imran pays Bambang: RM ￼
+</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Settle</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>6430FF9A-6F90-4023-8DF3-5DB5BBA72845</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>37F31033-E992-4EE7-8601-B942E0B78D21</string>
+				<key>WFCondition</key>
+				<integer>2</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Second Positive 1</string>
+						<key>OutputUUID</key>
+						<string>D84AB1D0-CE76-4E64-8482-A2513A33E4B4</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberValue</key>
+				<string>0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{0, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Settle</string>
+							</dict>
+							<key>{22, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Text 1</string>
+								<key>OutputUUID</key>
+								<string>BCD92F72-73E5-4BB0-B147-19F37B0037D7</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>￼Imran pays Danii: RM ￼
+</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Settle</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>37F31033-E992-4EE7-8601-B942E0B78D21</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>FD46EE0D-292D-4338-88E3-E70E2B94AA02</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>1CD3609F-67E1-4623-81C2-55D602EC68A3</string>
+				<key>WFCondition</key>
+				<integer>3</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Payout 2</string>
+						<key>OutputUUID</key>
+						<string>1CE4E815-9CE3-4CC2-8B31-7FE80EFA32D7</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberValue</key>
+				<string>0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Debt 2</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{4, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 2</string>
+								<key>OutputUUID</key>
+								<string>1CE4E815-9CE3-4CC2-8B31-7FE80EFA32D7</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>0 - ￼</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>0893E3ED-94D2-45EF-B0DD-AD13AD56CC70</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>First Positive 2</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{12, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 3</string>
+								<key>OutputUUID</key>
+								<string>A4D023E1-956B-4C57-A647-D352E0B34C40</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{2, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 3</string>
+								<key>OutputUUID</key>
+								<string>A4D023E1-956B-4C57-A647-D352E0B34C40</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>((￼) + fabs(￼)) / 2</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>2F65CEF1-ECD8-46CB-B3EB-99417B91F488</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Second Positive 2</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{12, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 1</string>
+								<key>OutputUUID</key>
+								<string>D1C9583C-448D-4196-974A-A511CC8BBE21</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{2, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 1</string>
+								<key>OutputUUID</key>
+								<string>D1C9583C-448D-4196-974A-A511CC8BBE21</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>((￼) + fabs(￼)) / 2</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>DB824CDC-FF9C-4415-A985-F24535DF63AA</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>First Amount 2</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{100, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 2</string>
+								<key>OutputUUID</key>
+								<string>2F65CEF1-ECD8-46CB-B3EB-99417B91F488</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{106, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 2</string>
+								<key>OutputUUID</key>
+								<string>DB824CDC-FF9C-4415-A985-F24535DF63AA</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{13, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 2</string>
+								<key>OutputUUID</key>
+								<string>2F65CEF1-ECD8-46CB-B3EB-99417B91F488</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{20, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 2</string>
+								<key>OutputUUID</key>
+								<string>2F65CEF1-ECD8-46CB-B3EB-99417B91F488</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{26, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 2</string>
+								<key>OutputUUID</key>
+								<string>DB824CDC-FF9C-4415-A985-F24535DF63AA</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{45, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Debt 2</string>
+								<key>OutputUUID</key>
+								<string>0893E3ED-94D2-45EF-B0DD-AD13AD56CC70</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{51, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 2</string>
+								<key>OutputUUID</key>
+								<string>2F65CEF1-ECD8-46CB-B3EB-99417B91F488</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{56, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 2</string>
+								<key>OutputUUID</key>
+								<string>2F65CEF1-ECD8-46CB-B3EB-99417B91F488</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{62, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 2</string>
+								<key>OutputUUID</key>
+								<string>DB824CDC-FF9C-4415-A985-F24535DF63AA</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{7, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Debt 2</string>
+								<key>OutputUUID</key>
+								<string>0893E3ED-94D2-45EF-B0DD-AD13AD56CC70</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{74, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Debt 2</string>
+								<key>OutputUUID</key>
+								<string>0893E3ED-94D2-45EF-B0DD-AD13AD56CC70</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{80, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 2</string>
+								<key>OutputUUID</key>
+								<string>DB824CDC-FF9C-4415-A985-F24535DF63AA</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{85, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 2</string>
+								<key>OutputUUID</key>
+								<string>2F65CEF1-ECD8-46CB-B3EB-99417B91F488</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{91, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 2</string>
+								<key>OutputUUID</key>
+								<string>DB824CDC-FF9C-4415-A985-F24535DF63AA</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>floor((￼) * (￼) / ((￼) + (￼))) + ceil((fmod((￼) * (￼), (￼) + (￼)) - fmod((￼) * (￼), (￼) + (￼))) / ((￼) + (￼)))</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>8069B825-40B5-4FDA-82F5-1A454B281D87</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Second Amount 2</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Debt 2</string>
+								<key>OutputUUID</key>
+								<string>0893E3ED-94D2-45EF-B0DD-AD13AD56CC70</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{7, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Amount 2</string>
+								<key>OutputUUID</key>
+								<string>8069B825-40B5-4FDA-82F5-1A454B281D87</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) - (￼)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>79486E3D-9A64-43BC-A21D-C14D36527FA0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>First Value 2</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Amount 2</string>
+								<key>OutputUUID</key>
+								<string>8069B825-40B5-4FDA-82F5-1A454B281D87</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>4961E578-74A0-4B50-8698-13425952A3B6</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>First Text 2</string>
+				<key>UUID</key>
+				<string>D95767D3-338C-402A-A95F-D08A40E1BD1C</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>First Value 2</string>
+						<key>OutputUUID</key>
+						<string>4961E578-74A0-4B50-8698-13425952A3B6</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Second Value 2</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Amount 2</string>
+								<key>OutputUUID</key>
+								<string>79486E3D-9A64-43BC-A21D-C14D36527FA0</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>06AD39BA-3654-4B0D-AF16-39286BA56C8A</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Second Text 2</string>
+				<key>UUID</key>
+				<string>AC0B4117-65B0-4D94-960C-9CC4F094E45E</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Second Value 2</string>
+						<key>OutputUUID</key>
+						<string>06AD39BA-3654-4B0D-AF16-39286BA56C8A</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>B74516CB-AD93-46D7-853F-B9112E339715</string>
+				<key>WFCondition</key>
+				<integer>2</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>First Positive 2</string>
+						<key>OutputUUID</key>
+						<string>2F65CEF1-ECD8-46CB-B3EB-99417B91F488</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberValue</key>
+				<string>0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{0, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Settle</string>
+							</dict>
+							<key>{24, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Text 2</string>
+								<key>OutputUUID</key>
+								<string>D95767D3-338C-402A-A95F-D08A40E1BD1C</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>￼Bambang pays Danii: RM ￼
+</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Settle</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>B74516CB-AD93-46D7-853F-B9112E339715</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>D5770DD4-DE74-41CE-9B37-EE5C63E5C3C6</string>
+				<key>WFCondition</key>
+				<integer>2</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Second Positive 2</string>
+						<key>OutputUUID</key>
+						<string>DB824CDC-FF9C-4415-A985-F24535DF63AA</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberValue</key>
+				<string>0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{0, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Settle</string>
+							</dict>
+							<key>{24, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Text 2</string>
+								<key>OutputUUID</key>
+								<string>AC0B4117-65B0-4D94-960C-9CC4F094E45E</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>￼Bambang pays Imran: RM ￼
+</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Settle</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>D5770DD4-DE74-41CE-9B37-EE5C63E5C3C6</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>1CD3609F-67E1-4623-81C2-55D602EC68A3</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>C947C3B9-F5DF-4E75-8137-15F706844C4C</string>
+				<key>WFCondition</key>
+				<integer>3</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Payout 3</string>
+						<key>OutputUUID</key>
+						<string>A4D023E1-956B-4C57-A647-D352E0B34C40</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberValue</key>
+				<string>0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Debt 3</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{4, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 3</string>
+								<key>OutputUUID</key>
+								<string>A4D023E1-956B-4C57-A647-D352E0B34C40</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>0 - ￼</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>4CEC6FA0-DB00-49FF-992C-8E8977E84831</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>First Positive 3</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{12, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 1</string>
+								<key>OutputUUID</key>
+								<string>D1C9583C-448D-4196-974A-A511CC8BBE21</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{2, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 1</string>
+								<key>OutputUUID</key>
+								<string>D1C9583C-448D-4196-974A-A511CC8BBE21</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>((￼) + fabs(￼)) / 2</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>1DF57ADB-534C-4F8F-999B-92429641ED58</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Second Positive 3</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{12, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 2</string>
+								<key>OutputUUID</key>
+								<string>1CE4E815-9CE3-4CC2-8B31-7FE80EFA32D7</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{2, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Payout 2</string>
+								<key>OutputUUID</key>
+								<string>1CE4E815-9CE3-4CC2-8B31-7FE80EFA32D7</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>((￼) + fabs(￼)) / 2</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>86783F68-448B-4253-A384-9CE32C60FF5F</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>First Amount 3</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{100, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 3</string>
+								<key>OutputUUID</key>
+								<string>1DF57ADB-534C-4F8F-999B-92429641ED58</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{106, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 3</string>
+								<key>OutputUUID</key>
+								<string>86783F68-448B-4253-A384-9CE32C60FF5F</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{13, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 3</string>
+								<key>OutputUUID</key>
+								<string>1DF57ADB-534C-4F8F-999B-92429641ED58</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{20, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 3</string>
+								<key>OutputUUID</key>
+								<string>1DF57ADB-534C-4F8F-999B-92429641ED58</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{26, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 3</string>
+								<key>OutputUUID</key>
+								<string>86783F68-448B-4253-A384-9CE32C60FF5F</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{45, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Debt 3</string>
+								<key>OutputUUID</key>
+								<string>4CEC6FA0-DB00-49FF-992C-8E8977E84831</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{51, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 3</string>
+								<key>OutputUUID</key>
+								<string>1DF57ADB-534C-4F8F-999B-92429641ED58</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{56, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 3</string>
+								<key>OutputUUID</key>
+								<string>1DF57ADB-534C-4F8F-999B-92429641ED58</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{62, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 3</string>
+								<key>OutputUUID</key>
+								<string>86783F68-448B-4253-A384-9CE32C60FF5F</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{7, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Debt 3</string>
+								<key>OutputUUID</key>
+								<string>4CEC6FA0-DB00-49FF-992C-8E8977E84831</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{74, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Debt 3</string>
+								<key>OutputUUID</key>
+								<string>4CEC6FA0-DB00-49FF-992C-8E8977E84831</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{80, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 3</string>
+								<key>OutputUUID</key>
+								<string>86783F68-448B-4253-A384-9CE32C60FF5F</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{85, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Positive 3</string>
+								<key>OutputUUID</key>
+								<string>1DF57ADB-534C-4F8F-999B-92429641ED58</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{91, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Positive 3</string>
+								<key>OutputUUID</key>
+								<string>86783F68-448B-4253-A384-9CE32C60FF5F</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>floor((￼) * (￼) / ((￼) + (￼))) + ceil((fmod((￼) * (￼), (￼) + (￼)) - fmod((￼) * (￼), (￼) + (￼))) / ((￼) + (￼)))</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>34A86884-69E6-49D0-8B9B-A6B5FC47F13F</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Second Amount 3</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Debt 3</string>
+								<key>OutputUUID</key>
+								<string>4CEC6FA0-DB00-49FF-992C-8E8977E84831</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{7, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Amount 3</string>
+								<key>OutputUUID</key>
+								<string>34A86884-69E6-49D0-8B9B-A6B5FC47F13F</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) - (￼)</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>A4C53B2A-E005-46DE-9299-A79AF2783397</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>First Value 3</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Amount 3</string>
+								<key>OutputUUID</key>
+								<string>34A86884-69E6-49D0-8B9B-A6B5FC47F13F</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>EFE88989-6AC8-4B28-928A-5C4B4A210E56</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>First Text 3</string>
+				<key>UUID</key>
+				<string>218350A8-7BC4-41F9-9439-C511D5D5A6E0</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>First Value 3</string>
+						<key>OutputUUID</key>
+						<string>EFE88989-6AC8-4B28-928A-5C4B4A210E56</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.calculateexpression</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Second Value 3</string>
+				<key>Input</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{1, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Amount 3</string>
+								<key>OutputUUID</key>
+								<string>A4C53B2A-E005-46DE-9299-A79AF2783397</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>(￼) / 100</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>UUID</key>
+				<string>07172896-5D0C-4A6B-AB53-BCAAD8EB5689</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.format.number</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>CustomOutputName</key>
+				<string>Second Text 3</string>
+				<key>UUID</key>
+				<string>8E02FB91-B7A8-4723-B68C-1E552FFD7B40</string>
+				<key>WFNumber</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Second Value 3</string>
+						<key>OutputUUID</key>
+						<string>07172896-5D0C-4A6B-AB53-BCAAD8EB5689</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberFormatDecimalPlaces</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>5558FAA8-B2E2-44A7-B349-DC1033EFE211</string>
+				<key>WFCondition</key>
+				<integer>2</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>First Positive 3</string>
+						<key>OutputUUID</key>
+						<string>1DF57ADB-534C-4F8F-999B-92429641ED58</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberValue</key>
+				<string>0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{0, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Settle</string>
+							</dict>
+							<key>{22, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>First Text 3</string>
+								<key>OutputUUID</key>
+								<string>218350A8-7BC4-41F9-9439-C511D5D5A6E0</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>￼Danii pays Imran: RM ￼
+</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Settle</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>5558FAA8-B2E2-44A7-B349-DC1033EFE211</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>34F8154A-341C-48E1-B2E8-C317C25BF538</string>
+				<key>WFCondition</key>
+				<integer>2</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>OutputName</key>
+						<string>Second Positive 3</string>
+						<key>OutputUUID</key>
+						<string>86783F68-448B-4253-A384-9CE32C60FF5F</string>
+						<key>Type</key>
+						<string>ActionOutput</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+				<key>WFNumberValue</key>
+				<string>0</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.setvariable</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{0, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Settle</string>
+							</dict>
+							<key>{24, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Second Text 3</string>
+								<key>OutputUUID</key>
+								<string>8E02FB91-B7A8-4723-B68C-1E552FFD7B40</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>￼Danii pays Bambang: RM ￼
+</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+				<key>WFVariableName</key>
+				<string>Settle</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>34F8154A-341C-48E1-B2E8-C317C25BF538</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>C947C3B9-F5DF-4E75-8137-15F706844C4C</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>91EC1CA3-A391-4256-AD1C-A128F8293442</string>
+				<key>WFCondition</key>
+				<integer>999</integer>
+				<key>WFControlFlowMode</key>
+				<integer>0</integer>
+				<key>WFInput</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>Type</key>
+						<string>Variable</string>
+						<key>VariableName</key>
+						<string>Settle</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenAttachment</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.showresult</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>Text</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{14, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Pot Text</string>
+								<key>OutputUUID</key>
+								<string>EA8C03B5-A254-4A24-9090-1D33BF9C8DD1</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{33, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Cash Text</string>
+								<key>OutputUUID</key>
+								<string>8E16DCDB-3DDA-4645-92BF-BFCD8FF73C91</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{51, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Taken Text</string>
+								<key>OutputUUID</key>
+								<string>45DF4AF6-C134-4244-99D1-3F65BA917849</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{54, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Line 1</string>
+							</dict>
+							<key>{56, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Line 2</string>
+							</dict>
+							<key>{58, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Line 3</string>
+							</dict>
+							<key>{72, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Settle</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>Total pot: RM ￼
+Cash in hand: RM ￼
+Taken early: RM ￼
+
+￼
+￼
+￼
+
+Settle up:
+￼</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>91EC1CA3-A391-4256-AD1C-A128F8293442</string>
+				<key>WFControlFlowMode</key>
+				<integer>1</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.showresult</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>Text</key>
+				<dict>
+					<key>Value</key>
+					<dict>
+						<key>attachmentsByRange</key>
+						<dict>
+							<key>{14, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Pot Text</string>
+								<key>OutputUUID</key>
+								<string>EA8C03B5-A254-4A24-9090-1D33BF9C8DD1</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{33, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Cash Text</string>
+								<key>OutputUUID</key>
+								<string>8E16DCDB-3DDA-4645-92BF-BFCD8FF73C91</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{51, 1}</key>
+							<dict>
+								<key>OutputName</key>
+								<string>Taken Text</string>
+								<key>OutputUUID</key>
+								<string>45DF4AF6-C134-4244-99D1-3F65BA917849</string>
+								<key>Type</key>
+								<string>ActionOutput</string>
+							</dict>
+							<key>{54, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Line 1</string>
+							</dict>
+							<key>{56, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Line 2</string>
+							</dict>
+							<key>{58, 1}</key>
+							<dict>
+								<key>Type</key>
+								<string>Variable</string>
+								<key>VariableName</key>
+								<string>Line 3</string>
+							</dict>
+						</dict>
+						<key>string</key>
+						<string>Total pot: RM ￼
+Cash in hand: RM ￼
+Taken early: RM ￼
+
+￼
+￼
+￼</string>
+					</dict>
+					<key>WFSerializationType</key>
+					<string>WFTextTokenString</string>
+				</dict>
+			</dict>
+		</dict>
+		<dict>
+			<key>WFWorkflowActionIdentifier</key>
+			<string>is.workflow.actions.conditional</string>
+			<key>WFWorkflowActionParameters</key>
+			<dict>
+				<key>GroupingIdentifier</key>
+				<string>91EC1CA3-A391-4256-AD1C-A128F8293442</string>
+				<key>WFControlFlowMode</key>
+				<integer>2</integer>
+			</dict>
+		</dict>
+	</array>
+	<key>WFWorkflowClientVersion</key>
+	<string>2700.0.4</string>
+	<key>WFWorkflowHasOutputFallback</key>
+	<false/>
+	<key>WFWorkflowHasShortcutInputVariables</key>
+	<false/>
+	<key>WFWorkflowIcon</key>
+	<dict>
+		<key>WFWorkflowIconGlyphNumber</key>
+		<integer>59511</integer>
+		<key>WFWorkflowIconStartColor</key>
+		<integer>4282601983</integer>
+	</dict>
+	<key>WFWorkflowImportQuestions</key>
+	<array/>
+	<key>WFWorkflowInputContentItemClasses</key>
+	<array/>
+	<key>WFWorkflowMinimumClientVersion</key>
+	<integer>900</integer>
+	<key>WFWorkflowMinimumClientVersionString</key>
+	<string>900</string>
+	<key>WFWorkflowName</key>
+	<string>CargasCalc</string>
+	<key>WFWorkflowOutputContentItemClasses</key>
+	<array/>
+	<key>WFWorkflowTypes</key>
+	<array/>
+</dict>
+</plist>
