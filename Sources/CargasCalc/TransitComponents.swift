@@ -238,6 +238,46 @@ struct StationSummary: View {
     }
 }
 
+/// Who pays whom when someone is over their share.
+struct SettlementBlock: View {
+    let split: Split
+
+    var body: some View {
+        let transfers = split.settlement
+
+        if !transfers.isEmpty {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Settle up")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Transit.porcelain)
+
+                ForEach(transfers) { transfer in
+                    HStack(alignment: .firstTextBaseline, spacing: 8) {
+                        Text(
+                            "\(Split.people[transfer.from]) pays " +
+                            "\(Split.people[transfer.to])"
+                        )
+                        .font(.subheadline)
+                        .foregroundStyle(Transit.porcelain)
+
+                        Spacer(minLength: 8)
+
+                        MoneyFigure(cents: transfer.amount, size: .compact)
+                    }
+                    .accessibilityElement(children: .combine)
+                }
+
+                if split.cash > 0 {
+                    Text("Cash in hand covers the rest of each payout.")
+                        .font(.caption2)
+                        .foregroundStyle(Transit.tertiary)
+                        .padding(.top, 2)
+                }
+            }
+        }
+    }
+}
+
 struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

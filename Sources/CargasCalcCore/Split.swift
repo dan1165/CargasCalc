@@ -63,6 +63,62 @@ public struct Split: Sendable {
     public var payouts: [Int] {
         zip(shares, advances).map { $0 - $1 }
     }
+
+    /// Who pays whom when someone took more than their share. Each debtor pays
+    /// exactly their over-share amount; the cash in hand covers the rest.
+    public var settlement: [SplitTransfer] {
+        var needs = payouts.map { max(0, $0) }
+        var transfers: [SplitTransfer] = []
+
+        for (from, payout) in payouts.enumerated() where payout < 0 {
+            var remaining = -payout
+            let totalNeed = needs.reduce(0, +)
+            guard remaining > 0, totalNeed > 0 else { continue }
+
+            var amounts = needs.map { remaining * $0 / totalNeed }
+            var leftover = remaining - amounts.reduce(0, +)
+
+            let order = needs.indices.sorted { lhs, rhs in
+                let left = (remaining * needs[lhs]) % totalNeed
+                let right = (remaining * needs[rhs]) % totalNeed
+                return left == right ? lhs < rhs : left > right
+            }
+
+            var cursor = 0
+            while leftover > 0 {
+                let index = order[cursor % order.count]
+                if amounts[index] < needs[index] {
+                    amounts[index] += 1
+                    leftover -= 1
+                }
+                cursor += 1
+            }
+
+            for to in needs.indices where amounts[to] > 0 {
+                transfers.append(
+                    SplitTransfer(from: from, to: to, amount: amounts[to])
+                )
+                needs[to] -= amounts[to]
+            }
+        }
+
+        return transfers
+    }
+}
+
+/// One over-share payment from one person to another.
+public struct SplitTransfer: Sendable, Equatable, Identifiable {
+    public let from: Int
+    public let to: Int
+    public let amount: Int
+
+    public var id: String { "\(from)-\(to)" }
+
+    public init(from: Int, to: Int, amount: Int) {
+        self.from = from
+        self.to = to
+        self.amount = amount
+    }
 }
 
 /// A saved snapshot of one split.
@@ -103,6 +159,22 @@ public struct SplitRecord: Codable, Identifiable, Sendable {
                 "took \(Money.format(split.advances[index])))"
             )
         }
+
+        if !split.settlement.isEmpty {
+            lines.append("")
+            lines.append("Settle up:")
+            for transfer in split.settlement {
+                lines.append(
+                    "\(Split.people[transfer.from]) pays " +
+                    "\(Split.people[transfer.to]): " +
+                    Money.format(transfer.amount)
+                )
+            }
+            if cash > 0 {
+                lines.append("Cash in hand covers the rest.")
+            }
+        }
+
         return lines.joined(separator: "\n")
     }
 }

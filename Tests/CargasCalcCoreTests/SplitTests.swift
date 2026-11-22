@@ -72,5 +72,69 @@ final class SplitTests: XCTestCase {
         let record = SplitRecord(cash: 10_000, advances: [20_000, 0, 0])
         XCTAssertTrue(record.summary.contains("Imran: owes RM 100.00"))
         XCTAssertFalse(record.summary.contains("Imran: gets"))
+        XCTAssertTrue(record.summary.contains("Settle up:"))
+        XCTAssertTrue(record.summary.contains("Imran pays Bambang: RM 50.00"))
+        XCTAssertTrue(record.summary.contains("Imran pays Danii: RM 50.00"))
+        XCTAssertTrue(record.summary.contains("Cash in hand covers the rest."))
+    }
+
+    func testSettlementOneOverSplitsAcrossTwo() {
+        let split = Split(cash: 10_000, advances: [20_000, 0, 0])
+        XCTAssertEqual(split.payouts, [-10_000, 10_000, 10_000])
+        XCTAssertEqual(
+            split.settlement,
+            [
+                SplitTransfer(from: 0, to: 1, amount: 5_000),
+                SplitTransfer(from: 0, to: 2, amount: 5_000),
+            ]
+        )
+    }
+
+    func testSettlementTwoOverPayTheThird() {
+        let split = Split(cash: 0, advances: [20_000, 20_000, 0])
+        XCTAssertEqual(split.payouts, [-6_666, -6_667, 13_333])
+        XCTAssertEqual(
+            split.settlement,
+            [
+                SplitTransfer(from: 0, to: 2, amount: 6_666),
+                SplitTransfer(from: 1, to: 2, amount: 6_667),
+            ]
+        )
+    }
+
+    func testSettlementIsProportionalWhenCreditorsDiffer() {
+        let split = Split(cash: 10_000, advances: [30_000, 5_000, 0])
+        XCTAssertEqual(split.payouts, [-15_000, 10_000, 15_000])
+        XCTAssertEqual(
+            split.settlement,
+            [
+                SplitTransfer(from: 0, to: 1, amount: 6_000),
+                SplitTransfer(from: 0, to: 2, amount: 9_000),
+            ]
+        )
+    }
+
+    func testSettlementWhenNobodyIsOver() {
+        let split = Split(cash: 90_000, advances: [0, 0, 0])
+        XCTAssertTrue(split.settlement.isEmpty)
+    }
+
+    func testSettlementTotalsAreExact() {
+        let split = Split(cash: 10_000, advances: [30_000, 5_000, 0])
+        for (index, payout) in split.payouts.enumerated() {
+            let paid = split.settlement
+                .filter { $0.from == index }
+                .reduce(0) { $0 + $1.amount }
+            let received = split.settlement
+                .filter { $0.to == index }
+                .reduce(0) { $0 + $1.amount }
+
+            if payout < 0 {
+                XCTAssertEqual(paid, -payout, "Debtor \(index) must pay the full over-share")
+            }
+            if payout > 0 {
+                XCTAssertLessThanOrEqual(received, payout, "Creditor \(index) cannot be overpaid")
+            }
+        }
     }
 }

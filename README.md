@@ -10,6 +10,7 @@ Repository: [github.com/dan1165/CargasCalc](https://github.com/dan1165/CargasCal
 - Enter the cash in hand and how much each person took early.
 - See the total pot, each person's equal share, and what they still receive.
 - The split is drawn as a midnight transit route: one pot junction, three coloured lines, and a bright tail for what each person still gets.
+- If someone took more than their share, a **Settle up** section shows exactly who pays whom; when two people are over, both payments are listed.
 - Save splits to history, open, edit, share, or delete them.
 - Share a saved split as an image card, or export the whole history as CSV.
 - Money is handled in integer cents; no floating-point split math.

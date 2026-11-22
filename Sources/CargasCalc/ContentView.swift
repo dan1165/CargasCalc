@@ -47,6 +47,11 @@ struct ContentView: View {
 
                         stationBlock
 
+                        if !split.settlement.isEmpty {
+                            SettlementBlock(split: split)
+                                .padding(.top, 22)
+                        }
+
                         saveBlock
                             .padding(.top, 24)
                             .padding(.bottom, 36)

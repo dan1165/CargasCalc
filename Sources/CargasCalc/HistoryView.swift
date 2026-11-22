@@ -209,6 +209,11 @@ private struct RecordDetailView: View {
                             }
                         }
 
+                        if !split.settlement.isEmpty {
+                            SettlementBlock(split: split)
+                                .padding(.top, 10)
+                        }
+
                         Hairline()
 
                         HStack {
